@@ -1,0 +1,1084 @@
+body {
+  font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+  min-width: 300PX;
+}
+
+html {
+  font-size: 67.5%;
+}
+
+.c-booking {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  min-height: 100vh;
+  line-height: 1;
+}
+
+.c-booking address,
+.c-booking p {
+  margin: 0;
+}
+
+.c-booking .b-booking {
+  background-color: #fafafa;
+  color: #333232;
+  padding: 3rem 1rem 0 1rem;
+}
+
+.c-booking .b-booking .b-time_selector .b-confirm {
+  display: none;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.563;
+}
+
+.c-booking .b-booking .b-time_selector .b-confirm p {
+  margin: 0 0 2.5rem;
+}
+
+.c-booking .b-booking .b-time_selector .b-confirm small {
+  font-size: 1.5rem;
+}
+
+.c-booking .b-booking .b-time_selector.is-selected .b-confirm {
+  display: block;
+}
+
+.c-booking .b-booking .b-time_selector .btn-next_step {
+  margin: 2.5rem 0 0;
+  position: relative;
+}
+
+.c-booking .b-booking .b-time_selector .btn-next_step::after,
+.c-booking .b-booking .b-time_selector .btn-next_step::before {
+  background: #f19b2b;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 1rem;
+}
+
+.c-booking .b-booking .b-time_selector .btn-next_step::after {
+  right: -1rem;
+}
+
+.c-booking .b-booking .b-time_selector .btn-next_step::before {
+  left: -1rem;
+}
+
+.c-booking .b-booking .b-time_selector .l-times {
+  margin: 0 -5PX;
+}
+
+.c-booking .b-booking .b-time_selector .l-times .time {
+  background: #fff;
+  border: 5PX solid #5d86c4;
+  color: #385d92;
+  cursor: pointer;
+  float: left;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 1.75rem 0;
+  text-align: center;
+  white-space: nowrap;
+  width: 25%;
+}
+
+.c-booking .b-booking .b-time_selector .l-times .time.is-active,
+.c-booking .b-booking .b-time_selector .l-times .time:hover {
+  background-color: #f19b2b;
+  color: #fff;
+}
+
+.c-booking .b-booking .b-time_selector .title {
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0 0 1rem;
+}
+
+.c-booking .b-booking .b-user_data address {
+  color: #333232;
+  display: block;
+  font-size: 1.65rem;
+  line-height: 1.4;
+  font-style: normal;
+  font-weight: 300;
+  margin: 0 0 1.5rem;
+  text-align: center;
+}
+
+.c-booking .b-booking .b-user_data .appointment {
+  color: #5a87c6;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.4;
+  margin: 0 0 2.15rem;
+  text-align: center;
+}
+
+.c-booking .b-booking .b-user_data .b-line_hr {
+  background-color: #5a87c6;
+  border: 0;
+  height: 1px;
+  margin: 0 -1rem 2.9rem;
+}
+
+.c-booking .b-booking .b-user_data .b-logo {
+  color: #5a87c6;
+  font-size: 2rem;
+  margin: 0 0 1.325rem;
+  text-align: center;
+}
+
+.c-booking .b-booking .b-user_data .b-logo .logo {
+  display: inline-block;
+  height: 3.394rem;
+  position: relative;
+  width: 15.815rem;
+}
+
+.c-booking .b-booking .b-user_data .b-logo .logo circle,
+.c-booking .b-booking .b-user_data .b-logo .logo path {
+  fill: #5a87c6;
+}
+
+.c-booking .b-booking .b-user_data .b-logo .logo .text {
+  bottom: -1.525rem;
+  font-weight: 100;
+  left: 0;
+  position: absolute;
+}
+
+.c-booking .b-booking .b-user_data .btn-submit {
+  display: none;
+  margin: 2rem 0 0;
+}
+
+.c-booking .b-booking .b-user_data .btn-submit::after,
+.c-booking .b-booking .b-user_data .btn-submit::before {
+  background: #f19b2b;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 1rem;
+}
+
+.c-booking .b-booking .b-user_data .btn-submit::after {
+  right: -1rem;
+}
+
+.c-booking .b-booking .b-user_data .btn-submit::before {
+  left: -1rem;
+}
+
+.c-booking .b-booking .b-user_data.is-correct .btn-submit {
+  display: block;
+}
+
+.c-booking .b-booking .b-user_data .form-control {
+  background-color: #fff;
+  border-color: #e1e4e5;
+  color: #333232;
+  font-size: 2rem;
+  font-weight: 300;
+  height: 5.25rem;
+  padding-bottom: 0;
+  padding-left: 1.75rem;
+  padding-top: 2rem;
+}
+
+.c-booking .b-booking .b-user_data .icon-calendar {
+  height: 2.75rem;
+  display: block;
+  margin: 0 auto;
+  width: 2.438rem;
+}
+
+.c-booking .b-booking .b-user_data .icon-card {
+  height: 2.625rem;
+  display: block;
+  margin: 0 auto;
+  width: 3.688rem;
+}
+
+.c-booking .b-booking .b-user_data .icon-letter {
+  height: 2.313rem;
+  display: block;
+  margin: 0 auto;
+  width: 3.563rem;
+}
+
+.c-booking .b-booking .b-user_data .icon-phone {
+  height: 3.625rem;
+  display: block;
+  margin: 0 auto;
+  width: 2.813rem;
+}
+
+.c-booking .b-booking .b-user_data .input-group {
+  margin: 0 0 1rem;
+}
+
+.c-booking .b-booking .b-user_data .input-group label {
+  font-size: 2rem;
+  font-weight: 300;
+  left: 7rem;
+  margin: 0;
+  position: absolute;
+  top: calc(50% - 1rem);
+  z-index: 4;
+}
+
+.c-booking .b-booking .b-user_data .input-group label .error_text {
+  color: #f00;
+  display: none;
+  margin: 0 0 0 1rem;
+}
+
+.c-booking .b-booking .b-user_data .input-group.has-error label {
+  color: rgba(51, 50, 50, 0.57);
+  font-size: 1.125rem;
+  top: .875rem;
+}
+
+.c-booking .b-booking .b-user_data .input-group.has-error label .error_text {
+  display: inline-block;
+}
+
+.c-booking .b-booking .b-user_data .input-group input:focus + label,
+.c-booking .b-booking .b-user_data .input-group input:valid + label {
+  color: rgba(51, 50, 50, 0.57);
+  font-size: 1.125rem;
+  top: .875rem;
+}
+
+.c-booking .b-booking .b-user_data .input-group .form-control {
+  border-radius: 0 5px 5px 0;
+}
+
+.c-booking .b-booking .b-user_data .input-group.has-error .form-control {
+  background-color: #fde9e9;
+  color: #f00;
+}
+
+.c-booking .b-booking .b-user_data .input-group .icon-v {
+  display: none;
+  height: 2.188rem;
+  position: absolute;
+  right: 2rem;
+  top: calc(50% - 1.063rem);
+  width: 2.625rem;
+  z-index: 4;
+}
+
+.c-booking .b-booking .b-user_data .input-group .icon-v path,
+.c-booking .b-booking .b-user_data .input-group .icon-v stroke {
+  fill: #5a87c6;
+}
+
+.c-booking .b-booking .b-user_data .input-group.is-correct .icon-v {
+  display: block;
+}
+
+.c-booking .b-booking .b-user_data .input-group .icon-x {
+  display: none;
+  position: absolute;
+  right: 2rem;
+  top: calc(50% - 16px);
+  z-index: 4;
+}
+
+.c-booking .b-booking .b-user_data .input-group.has-error .icon-x {
+  display: block;
+}
+
+.c-booking .b-booking .b-user_data .input-group-addon {
+  background-color: #e1e4e5;
+  border-color: #e1e4e5;
+  text-align: center;
+  width: 5.25rem;
+}
+
+.c-booking .b-booking .b-user_data .input-group-addon path,
+.c-booking .b-booking .b-user_data .input-group-addon rect {
+  fill: #fff;
+}
+
+.c-booking .b-booking .b-user_data .input-group-addon .spt {
+  display: block;
+  margin: 0 auto;
+}
+
+.c-booking .b-booking .btn-default {
+  background: #f19b2b;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  height: 5rem;
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 5rem;
+  padding: 0 1rem 0 72PX;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.c-booking .b-booking .btn-default .icon-logo {
+  height: 3.188rem;
+  left: 15PX;
+  position: absolute;
+  top: calc(50% - 1.563rem);
+  width: 3.625rem;
+}
+
+.c-booking .b-booking .btn-default .icon-logo path {
+  fill: #fff;
+}
+
+.c-booking.has-time_selector .b-booking {
+  background-color: #5d86c4;
+  color: #fff;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.c-booking .b-booking_col {
+  background-color: #fafafa;
+  color: #333232;
+  padding: 0;
+}
+
+.c-booking .b-calendar {
+  background-color: #5d86c4;
+  color: #fff;
+  margin: 0 0 2rem;
+  padding: 1rem;
+}
+
+.c-booking .b-calendar .b-date_selector .date {
+  float: left;
+  font-size: 1.45rem;
+  font-weight: 700;
+  padding: .5rem 0;
+  text-align: center;
+  width: 14.286%;
+}
+
+.c-booking .b-calendar .b-date_selector .date button,
+.c-booking .b-calendar .b-date_selector .date span {
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  color: currentColor;
+  display: block;
+  font: inherit;
+  height: 3.625rem;
+  line-height: 3.625rem;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  width: 3.625rem;
+}
+
+.c-booking .b-calendar .b-date_selector .date button.is-active,
+.c-booking .b-calendar .b-date_selector .date button:not([disabled]):hover {
+  background-color: #ef9b35;
+}
+
+.c-booking .b-calendar .b-date_selector .date button[disabled] {
+  color: #385d92;
+}
+
+.c-booking .b-calendar .b-date_selector .date button[disabled]::after {
+  background-color: #385d92;
+  border-radius: 3PX;
+  content: "";
+  display: block;
+  height: .375rem;
+  left: 10%;
+  position: absolute;
+  top: calc(50% - .185rem);
+  width: 79%;
+}
+
+.c-booking .b-calendar .b-date_selector .date button:not([disabled]) {
+  cursor: pointer;
+}
+
+.c-booking .b-calendar .b-date_selector .txt {
+  font-size: 1.25rem;
+  font-weight: 300;
+  float: right;
+  margin: 1.75rem 0 0;
+}
+
+.c-booking .b-calendar .b-month_selector {
+  margin: 0 0 1rem;
+}
+
+.c-booking .b-calendar .b-month_selector .btn-action {
+  background: none;
+  border: 0;
+  color: #385d92;
+  cursor: pointer;
+  display: none;
+  font: inherit;
+  font-size: 3.375rem;
+  padding: 0;
+}
+
+.c-booking .b-calendar .b-month_selector .month {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.c-booking .b-calendar .title {
+  font-size: 1.675rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c-booking .b-calendar .title span {
+  display: block;
+}
+
+.c-booking .b-calendar .title .icon-calendar {
+  display: block;
+  height: 4rem;
+  margin: 0 1.5rem 0 0;
+  width: 3.563rem;
+}
+
+.c-booking .b-calendar .title .icon-calendar path {
+  fill: #fff;
+}
+
+.c-booking .b-calendar .title_date {
+  font-size: 1.875rem;
+  font-weight: 300;
+  line-height: 1.1;
+  margin: 0 0 2rem;
+}
+
+.c-booking .b-calendar_col {
+  background-color: #5d86c4;
+  color: #fff;
+  padding: 0;
+}
+
+.c-booking .b-calendar_col::after {
+  border-color: transparent transparent transparent #5d86c4;
+  border-style: solid;
+  border-width: 1.25rem 0 1.25rem 1.25rem;
+  content: "";
+  height: 0;
+  display: none;
+  left: 100%;
+  position: absolute;
+  top: 5rem;
+  width: 0;
+  z-index: 1;
+}
+
+.c-booking.has-user_data .b-calendar_col {
+  display: none;
+}
+
+.c-booking .b-confirmation {
+  padding: 0 2.222rem;
+}
+
+.c-booking .b-confirmation .b-details {
+  background-color: #5d86c4;
+  color: #fff;
+  margin: 0 -2.222rem;
+  padding: 4.074rem 2.222rem 2.222rem;
+}
+
+.c-booking .b-confirmation .b-details .b-fact {
+  font-size: 1.963rem;
+  line-height: 1.2;
+  margin: 0 0 1.481rem;
+}
+
+.c-booking .b-confirmation .b-details .b-fact .param {
+  color: #b8cdeb;
+}
+
+.c-booking .b-confirmation .b-details .b-line_hr {
+  background-color: #799ed6;
+  border: 0;
+  height: 2px;
+  margin: 0 0 3.333rem;
+}
+
+.c-booking .b-confirmation .b-details .chapter {
+  font-size: 4.444rem;
+  font-weight: 100;
+  margin: 0 0 4.074rem;
+  text-align: center;
+}
+
+.c-booking .b-confirmation .b-information {
+  padding: 0 0 3.333rem;
+}
+
+.c-booking .b-confirmation .b-information .chapter {
+  font-size: 2.593rem;
+  margin: 0 -2.222rem 4.444rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c-booking .b-confirmation .b-information .chapter .icon-stand {
+  display: block;
+  margin: 0 auto;
+  /* max-width: 424PX; */
+}
+
+.c-booking .b-confirmation .b-information .chapter .icon-stand .fill1 {
+  fill: #5d86c4;
+}
+
+.c-booking .b-confirmation .b-information .chapter .icon-stand .fill2 {
+  fill: #fff;
+}
+
+.c-booking .b-confirmation .b-information .chapter .title {
+  color: #5d86c4;
+  margin: -7.407rem 0 0;
+}
+
+.c-booking .b-confirmation .b-information .l-info {
+  font-size: 1.704rem;
+  line-height: 1.4;
+}
+
+.c-booking .b-confirmation .b-information .l-info li {
+  margin: 0 0 4.444rem;
+  padding: 0 0 0 5.926rem;
+  position: relative;
+}
+
+.c-booking .b-confirmation .b-information .l-info li:last-child {
+  margin-bottom: 0;
+}
+
+.c-booking .b-confirmation .b-information .l-info li .icon-logo {
+  height: 2.871rem;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 3.241rem;
+}
+
+.c-booking .b-confirmation .b-information .l-info li .icon-logo path {
+  fill: #3773b1;
+}
+
+.c-booking .b-confirmation .b-location {
+  background-color: #fff;
+  color: #333232;
+  padding: 0 0 4.259rem 0;
+}
+
+.c-booking .b-confirmation .b-location .b-address {
+  background-color: #f1f1f1;
+  height: 16.296rem;
+}
+
+.c-booking .b-confirmation .b-location .b-address address {
+  display: block;
+  font-size: 2.222rem;
+  line-height: 1.4;
+  padding: 0 1.481rem;
+}
+
+.c-booking .b-confirmation .b-location .b-address .b-title {
+  background-color: #ef9b35;
+  color: #fff;
+  font-size: 1.852rem;
+  font-weight: 300;
+  height: inherit;
+  text-align: center;
+  text-transform: uppercase;
+  width: 22.222rem;
+}
+
+.c-booking .b-confirmation .b-location .b-address .b-title a {
+  color: inherit;
+}
+
+.c-booking .b-confirmation .b-location .b-address .b-title p {
+  width: inherit;
+}
+
+.c-booking .b-confirmation .b-location .b-address p:not(:last-child) {
+  margin: 0 0 2rem;
+}
+
+.c-booking .b-confirmation .b-location .b-address .icon-pin {
+  display: inline-block;
+  height: 6.481rem;
+  width: 3.797rem;
+}
+
+.c-booking .b-confirmation .b-location .b-address .icon-pin path {
+  fill: #fff;
+}
+
+.c-booking .b-confirmation .b-location .b-image {
+  margin: 0 -2.222rem;
+  text-align: center;
+}
+
+.c-booking .b-confirmation .b-location .b-line_hr {
+  background-color: #799ed6;
+  border: 0;
+  height: 2px;
+  margin: 0 0 3.333rem;
+}
+
+.c-booking .b-confirmation .b-location .b-name {
+  background-color: #5d86c4;
+  border-radius: 3.333rem;
+  color: #fff;
+  font-size: 2.222rem;
+  font-weight: 300;
+  height: 6.667rem;
+  line-height: 6.667rem;
+  margin: -3.333rem auto 3.333rem;
+  max-width: 454PX;
+  position: relative;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 1;
+}
+
+.c-booking .b-confirmation .b-location .b-name span {
+  display: inline-block;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
+.c-booking .b-confirmation .b-location .b-text {
+  font-size: 1.852rem;
+  line-height: 1.4;
+  margin: 0 0 3.333rem;
+}
+
+.c-booking .b-confirmation .b-notify {
+  background-color: #6f9de2;
+  color: #fff;
+  font-size: 2.222rem;
+  height: 10rem;
+  margin: 0 -2.222rem;
+}
+
+.c-booking .b-confirmation .b-notify a {
+  color: inherit;
+}
+
+.c-booking .b-confirmation .b-notify p + p {
+  margin: 0 0 0 1rem;
+}
+
+.c-booking .b-confirmation .b-notify .container-fluid {
+  height: inherit;
+}
+
+.c-booking .b-confirmation .b-notify .container-fluid .row {
+  height: inherit;
+}
+
+.c-booking .b-confirmation .b-notify .container-fluid .row .col {
+  height: inherit;
+}
+
+.c-booking .b-confirmation .b-notify .container-fluid .row .col + .col {
+  -webkit-box-shadow: -1px 0 0 0 #5d86c4;
+  box-shadow: -1px 0 0 0 #5d86c4;
+}
+
+.c-booking .b-confirmation .b-notify .icon-calendar {
+  display: inline-block;
+  height: 5rem;
+  width: 4.353rem;
+}
+
+.c-booking .b-confirmation .b-notify .icon-calendar path {
+  fill: #fff;
+}
+
+.c-booking .b-confirmation .b-notify .icon-letter {
+  display: inline-block;
+  height: 4.815rem;
+  width: 7.871rem;
+}
+
+.c-booking .b-confirmation .b-notify .icon-letter path {
+  fill: #fff;
+}
+
+.c-booking > .container-fluid {
+  min-height: 100vh;
+}
+
+.c-booking > .container-fluid .row {
+  min-height: 100vh;
+}
+
+.c-booking .navbar {
+  height: 9.074rem;
+  padding: 0 2.963rem;
+}
+
+.c-booking .navbar.row {
+  min-height: auto;
+}
+
+.c-booking .navbar .b-cont {
+  height: inherit;
+}
+
+.c-booking .navbar .btn-oblique {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+}
+
+.c-booking .navbar .btn-oblique + .btn-oblique {
+  margin-left: 1.852rem;
+}
+
+.c-booking .navbar .icon-chat {
+  display: inline-block;
+  height: 4.444rem;
+  width: 5rem;
+}
+
+.c-booking .navbar .icon-chat path {
+  fill: #3773b1;
+}
+
+.c-booking .navbar .icon-chat .fill2 {
+  fill: #5d86c4;
+}
+
+.c-booking .navbar .icon-phone {
+  display: inline-block;
+  height: 4.444rem;
+  width: 3.427rem;
+}
+
+.c-booking .navbar .icon-phone path {
+  fill: #3773b1;
+}
+
+.c-booking .navbar .navbar-brand {
+  height: 5.37rem;
+  margin: 0;
+  padding: 0;
+  width: 23.519rem;
+}
+
+.c-booking .navbar .navbar-brand circle,
+.c-booking .navbar .navbar-brand path {
+  fill: #5d86c4;
+}
+
+.spt {
+  display: inline-block;
+}
+
+@media (min-width: 576px) {
+  html {
+    font-size: 100%;
+  }
+
+  .c-booking .b-booking {
+    padding: 3rem 3.75rem 1rem 3.75rem;
+  }
+
+  .c-booking .b-booking .b-user_data address {
+    color: #9a9a9a;
+    font-size: 1.5rem;
+    margin: 0 0 1rem;
+  }
+
+  .c-booking .b-booking .b-user_data .appointment {
+    margin: 0 0 1.15rem;
+  }
+
+  .c-booking .b-booking .b-user_data .b-line_hr {
+    background-color: #3274b3;
+    margin: 0 0 1.5rem;
+  }
+
+  .c-booking .b-booking .b-user_data .b-logo {
+    margin: 0 0 2.125rem;
+  }
+
+  .c-booking .b-booking .b-user_data .b-logo .logo {
+    height: 4.438rem;
+    width: 19.375rem;
+  }
+
+  .c-booking .b-booking .b-user_data .b-logo .logo .text {
+    bottom: -.875rem;
+  }
+
+  .c-booking .b-booking .b-user_data .btn-submit::after,
+  .c-booking .b-booking .b-user_data .btn-submit::before {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 67.5%;
+  }
+
+  .c-booking .b-booking .b-time_selector .btn-next_step {
+    margin: 0;
+  }
+
+  .c-booking .b-booking .b-time_selector .l-times .time {
+    background: #fff;
+    border: 5PX solid #fafafa;
+    font-weight: 400;
+    width: 20%;
+  }
+
+  .c-booking .b-booking .b-time_selector .title {
+    margin: 0 0 2.75rem;
+    padding: 2.2rem 0 0;
+  }
+
+  .c-booking .b-booking .b-user_data address {
+    margin: 0 0 2.75rem;
+  }
+
+  .c-booking .b-booking .b-user_data .btn-submit {
+    margin: 4.875rem 0 0;
+  }
+
+  .c-booking .b-booking .btn-default {
+    min-width: 30rem;
+    width: auto;
+  }
+
+  .c-booking.has-time_selector .b-booking {
+    background-color: #fafafa;
+    color: #333232;
+    padding: 3rem 3.75rem 1rem 3.75rem;
+  }
+
+  .c-booking .b-calendar {
+    margin: 0;
+    padding: 3rem 3.75rem;
+  }
+
+  .c-booking .b-calendar .b-date_selector {
+    margin: 0 -2rem;
+  }
+
+  .c-booking .b-calendar .b-date_selector .date {
+    font-size: 1.75rem;
+    font-weight: 400;
+  }
+
+  .c-booking .b-calendar .b-month_selector {
+    margin: 0 0 2rem;
+    text-align: center;
+  }
+
+  .c-booking .b-calendar .b-month_selector .btn-action {
+    display: inline-block;
+  }
+
+  .c-booking .b-calendar .b-month_selector .month {
+    font-weight: 300;
+    font-size: 3.375rem;
+    margin: 0 3.5rem;
+  }
+
+  .c-booking .b-calendar .title {
+    font-size: 2rem;
+    font-weight: 300;
+    margin: 0 0 2.5rem;
+    text-transform: none;
+  }
+
+  .c-booking .b-calendar_col::after {
+    display: block;
+  }
+
+  .c-booking.has-user_data .b-calendar_col {
+    display: initial;
+  }
+}
+
+@media (min-width: 992px) {
+  html {
+    font-size: 100%;
+  }
+
+  .c-booking .b-booking .b-user_data .btn-submit {
+    margin: 7.875rem 0 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .c-booking .b-booking .b-time_selector .l-times .time {
+    font-size: 1.5rem;
+    padding: 2.75rem 0;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px), (min-width: 992px) {
+  .c-booking .b-confirmation {
+    padding: 0 1.5rem;
+  }
+
+  .c-booking .b-confirmation .b-details {
+    margin: 0 -1.5rem;
+    padding: 2.75rem 1.5rem 1.5rem;
+  }
+
+  .c-booking .b-confirmation .b-details .b-fact {
+    font-size: 1.325rem;
+    margin: 0 0 1rem;
+  }
+
+  .c-booking .b-confirmation .b-details .b-line_hr {
+    margin: 0 0 2.25rem;
+  }
+
+  .c-booking .b-confirmation .b-details .chapter {
+    font-size: 3rem;
+    margin: 0 0 2.75rem;
+  }
+
+  .c-booking .b-confirmation .b-information {
+    padding: 0 0 2.25rem;
+  }
+
+  .c-booking .b-confirmation .b-information .chapter {
+    font-size: 1.75rem;
+    margin: 0 -1.5rem 3rem;
+  }
+
+  .c-booking .b-confirmation .b-information .chapter .title {
+    margin: -5em 0 0;
+  }
+
+  .c-booking .b-confirmation .b-information .l-info {
+    font-size: 1.15rem;
+  }
+
+  .c-booking .b-confirmation .b-information .l-info li {
+    margin: 0 0 3rem;
+    padding: 0 0 0 4rem;
+  }
+
+  .c-booking .b-confirmation .b-information .l-info li .icon-logo {
+    height: 1.938rem;
+    width: 2.188rem;
+  }
+
+  .c-booking .b-confirmation .b-location {
+    padding: 0 0 2.875rem 0;
+  }
+
+  .c-booking .b-confirmation .b-location .b-address {
+    height: 11rem;
+  }
+
+  .c-booking .b-confirmation .b-location .b-address address {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .c-booking .b-confirmation .b-location .b-address .b-title {
+    font-size: 1.25rem;
+    width: 15rem;
+  }
+
+  .c-booking .b-confirmation .b-location .b-address .icon-pin {
+    height: 4.375rem;
+    width: 2.563rem;
+  }
+
+  .c-booking .b-confirmation .b-location .b-image {
+    margin: 0 -1.5rem;
+  }
+
+  .c-booking .b-confirmation .b-location .b-line_hr {
+    margin: 0 0 2.25rem;
+  }
+
+  .c-booking .b-confirmation .b-location .b-name {
+    border-radius: 2.25rem;
+    font-size: 1.5rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    margin: -2.25rem auto 2.25rem;
+  }
+
+  .c-booking .b-confirmation .b-location .b-text {
+    font-size: 1.25rem;
+    margin: 0 0 2.25rem;
+  }
+
+  .c-booking .b-confirmation .b-notify {
+    font-size: 1.5rem;
+    height: 6.75rem;
+    margin: 0 -1.5rem;
+  }
+
+  .c-booking .b-confirmation .b-notify .icon-calendar {
+    height: 3.375rem;
+    width: 2.938rem;
+  }
+
+  .c-booking .b-confirmation .b-notify .icon-letter {
+    height: 3.25rem;
+    width: 5.313rem;
+  }
+
+  .c-booking .navbar {
+    height: 6.125rem;
+    padding: 0 2rem;
+  }
+
+  .c-booking .navbar .btn-oblique + .btn-oblique {
+    margin-left: 1.25rem;
+  }
+
+  .c-booking .navbar .icon-chat {
+    height: 3rem;
+    width: 3.375rem;
+  }
+
+  .c-booking .navbar .icon-phone {
+    height: 3rem;
+    width: 2.313rem;
+  }
+
+  .c-booking .navbar .navbar-brand {
+    height: 3.625rem;
+    width: 15.875rem;
+  }
+}

@@ -1,0 +1,48 @@
+<section class="c-booking">
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-md"  @click="hideDatePicker()">
+
+      <h1>Лист записи на <span @click.stop="showDatePicker=!showDatePicker" class="badge badge-info" title="Сменить дату">&laquo;{{chosenFullDate}}&raquo;</span></h1>
+      <datepicker :bootstrapStyling="true" :monday-first="true"  :value="chosenDate" v-show="showDatePicker" :inline="true" language="ru"></datepicker>
+
+      <div v-for="(timeRows, time) in timeTable">
+        <h2><span  class="badge badge-success">{{ time }}</span></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Клиент</th>
+              <th>Дети</th>
+              <th>Комментарий</th>
+              <th colspan="2">Действия</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr v-for="row in timeRows">
+            <td>{{ row.client.name }}</td>
+            <td>{{ row.kids }}</td>
+            <td>{{ row.comment }}</td>
+            <td style="width: 120px;">
+              <click-confirm :messages="{ title: 'Точно удалить?', yes: 'ДА', no: 'Ой, нет' }">
+                <button @click="deleteAppointment(row.id)" class="btn btn-danger"><i class="fa fa-trash"></i> Удалить</button>
+              </click-confirm>
+            </td>
+            <td style="width: 120px;">
+                <b-btn @click="showTransferModal(row.id, time)" variant="primary"><i class="fa fa-arrows"></i> Перенести</b-btn>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
+  <b-modal close-title="Отменить операцию" ok-title="Перенести" id="transferModal" title="Перенести запись" @ok="moveAppointment">
+    <select class="form-control"  v-model="newApptTime">
+      <option value="">-- Новое время</option>
+      <option :value="time" v-for="(timeRows, time) in timeTable" v-if="time != currentApptTime">
+        {{time}} ( занято: {{timeRows.length}} )
+      </option>
+    </select>
+  </b-modal>
+</section>
