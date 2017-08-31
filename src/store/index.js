@@ -14,6 +14,8 @@ import * as actions from './actions';
 
 // Modules
 import schedule from './modules/schedule';
+import pos from './modules/pos';
+import auth from './modules/auth';
 
 Vue.use(Vuex);
 
@@ -24,6 +26,11 @@ export default new Vuex.Store({
    * Assign the actions to the store
    */
   actions,
+  mutations: {
+    SHOW_ALERT() {
+
+    },
+  },
 
   /**
    * Assign the getters to the store
@@ -35,6 +42,8 @@ export default new Vuex.Store({
    */
   modules: {
     schedule,
+    pos,
+    auth,
   },
 
   /**

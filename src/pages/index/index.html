@@ -1,232 +1,37 @@
-<section class="c-booking"  :class="{'has-time_selector': $route.name == 'schedule', 'has-user_data': $route.name != 'schedule'}">
-  <div class="container-fluid">
-  <div class="row">
-    <div class="col-md b-calendar_col">
-      <div class="b-calendar">
-        <p class="title d-flex align-items-center justify-content-center">
-          <span class="icon-calendar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="708.91 447 29.68 33.92"><g
-            data-name="Group 204" transform="translate(504)"><path data-name="Path 55"
-                                                                   d="M0 32V52.32a2.72 2.72 0 0 0 2.7 2.75H26.98a2.72 2.72 0 0 0 2.7-2.74V32ZM7.42 53.03h-5.4V47.6h5.4Zm0-6.78h-5.4V40.82h5.4Zm0-6.78h-5.4V34.03h5.4ZM14.17 53.03H8.77V47.6h5.4Zm0-6.78H8.77V40.82h5.4Zm0-6.78H8.77V34.03h5.4ZM20.91 53.03h-5.4V47.6h5.4Zm0-6.78h-5.4V40.82h5.4Zm0-6.78h-5.4V34.03h5.4ZM27.66 53.03h-5.4V47.6h5.4Zm0-6.78h-5.4V40.82h5.4Zm0-6.78h-5.4V34.03h5.4Z"
-                                                                   transform="translate(204.905 425.854)"/><path
-            data-name="Path 56"
-            d="M26.98 4.07H22.6V1.02a1.01 1.01 0 1 0-2.02 0V4.07H9.11V1.02a1.01 1.01 0 1 0-2.02 0V4.07H2.7A2.72 2.72 0 0 0 0 6.82V9.16H0V9.5H29.68V9.16h0V6.82A2.72 2.72 0 0 0 26.98 4.07ZM8.1 8.82a2.04 2.04 0 0 1-1.01-3.8v1.76a1.01 1.01 0 1 0 2.02 0V5.02A2.04 2.04 0 0 1 8.1 8.82Zm13.49 0a2.04 2.04 0 0 1-1.01-3.8v1.76a1.01 1.01 0 1 0 2.02 0V5.02a2.04 2.04 0 0 1-1.01 3.8Z"
-            transform="translate(204.905 447)"/></g></svg></span>
-          <span><b v-if="departmentInfo">&laquo;{{ departmentInfo.title }}&raquo; </b>  Запись </span></p>
-        <p class="title_date hidden-md-up">Выберите дату</p>
-        <div class="b-month_selector">
-          <button type="button" class="btn-action" v-show="prevMonthAvailable" @click="movePrevMonth()">&lt;</button>
-          <span class="month"><b>{{thisMonthName}} {{thisYear}}</b></span>
-          <button type="button" class="btn-action" v-show="nextMonthAvailable" @click="moveNextMonth()">&gt;</button>
-        </div>
-        <div class="b-date_selector clearfix">
-          <div class="date"><span>Пн</span></div>
-          <div class="date"><span>Вт</span></div>
-          <div class="date"><span>Ср</span></div>
-          <div class="date"><span>Чт</span></div>
-          <div class="date"><span>Пт</span></div>
-          <div class="date"><span>Сб</span></div>
-          <div class="date"><span>Вс</span></div>
-          <div class="date" v-for="ed in firstDayThisMonthWeekDay">&nbsp;</div>
-          <div class="date" v-for="day in lastDayThisMonth">
-            <button type="button" @click="chooseDate(day)" v-if="isDateAvailable(day)"
-                    :class="{'is-active': isChosenDate(day)}" @mouseout="resetHoverDay" @mouseover="hoverDay(day)">{{ day }}            </button>
-            <button type="button" v-else disabled>{{ day }}</button>
-          </div>
+<div class="container d-flex h-100">
+<div class="row align-self-center" >
+  <div class="col-sm-12 col-md-4">
+    <div class="card">
+      <div class="card-block text-center text-success">
+        <i class="fa fa-3x fa-calendar"></i>
+        <h4 class="card-title">Запись</h4>
+        <p class="card-text">Запись клиента на сеанс, листы записи</p>
+        <router-link to="/schedule/1"  class="btn btn-success"><i class="fa fa-sign-in"></i> Перейти</router-link>
+      </div><!-- / card-block -->
+    </div><!-- / card -->
+  </div><!-- / column -->
 
-        </div>
-      </div>
-    </div>
+  <div class="col-sm-12 col-md-4">
+    <div class="card">
+      <div class="card-block text-center text-primary">
+        <i class="fa fa-3x fa-usd"></i>
+        <h4 class="card-title">Продажа</h4>
+        <p class="card-text">Продажа абонементов и сопутствующих товаров</p>
+        <router-link to="/pos" class="btn btn-primary"><i class="fa fa-sign-in"></i> Начать продажу</router-link>
+      </div><!-- / card-block -->
+    </div><!-- / card -->
+  </div><!-- / column -->
 
-    <div class="col-md b-booking_col">
-        <div class="alert" :class="{'alert-danger': (dateInfo.capacity <= dateInfo.occupied), 'alert-success': (dateInfo.capacity > dateInfo.occupied)}"  v-if="dateInfo">
-          <strong>Доступно для записи:</strong> {{dateInfo.capacity - dateInfo.occupied}}.<br><br>
-          <button @click="gotoTimeTable()" type="button" class="btn btn-primary"><i class="fa fa-list"></i> Посмотреть подобно лист записи</button>
-        </div>
+  <div class="col-sm-12 col-md-4">
+    <div class="card">
+      <div class="card-block text-center text-warning">
+        <i class="fa fa-3x fa-users"></i>
+        <h4 class="card-title">Учет посещений</h4>
+        <p class="card-text">Учет посещений. Контроль абонементов.</p>
+        <a href="#" class="btn btn-warning"><i class="fa fa-sign-in"></i> Перейти</a>
+      </div><!-- / card-block -->
+    </div><!-- / card -->
+  </div><!-- / column -->
 
-
-      <div class="b-booking" :class="{'has-time_selector': $route.name == 'schedule'}" v-show="chosenDate">
-        <template v-if="$route.name == 'schedule'">
-          <!-- step 1 -->
-          <div class="b-time_selector" :class="{'is-selected':chosenDate}">
-            <p class="title">Выберите время на дату &laquo;{{ chosenFullDate }}&raquo;</p>
-            <div class="l-times clearfix">
-              <button type="button" @click="chooseTime(timeInfo, time)" class="time" :class="{'is-active': chosenTime == time}"
-                      v-for="(timeInfo, time) in availableTimes">{{ time }}<br>
-                <span class="text-success"> Мест: {{timeInfo.available - timeInfo.occupied}}</span>
-              </button>
-            </div>
-            <div class="b-confirm" v-show="chosenTime">
-              <p>
-                <!--<small>Подтвердите выбранный день и время:</small>-->
-                <br>
-                {{ chosenFullDate }}<br>
-                <template v-if="chosenTime">{{ chosenTime }}</template>
-              </p>
-              <button type="button" @click="goToDetails" class="btn-default btn-next_step" v-if="chosenTime"><i
-                class="fa fa-plus"></i> Записать
-              </button><br><br>
-
-            </div>
-          </div>
-          <!-- /step 1 -->
-        </template>
-        <template v-if="$route.name == 'details'">
-          <!-- step 2 -->
-          <div class="b-user_data is-correct">
-            <p class="b-logo">
-            <p class="appointment">
-              Время посещения: {{ chosenFullDate }} @ {{ chosenTime }}
-            </p>
-            <hr class="b-line_hr">
-            <div v-if="!clientType">
-              <button class="btn btn-success btn-lg" @click="clientType='old'">Постоянный клиент</button>
-              <button class="btn btn-info btn-lg" @click="clientType='new'">Новый клиент</button>
-            </div>
-            <!-- OLD client -->
-            <div v-if="clientType == 'old'">
-              <button class="btn btn-info btn-lg" @click.prevent="clientType='new'">Ввести нового</button><br><br>
-              <hr class="b-line_hr">
-              <b>Найти клиента</b>
-
-                <div class="input-group" :class="{'is-correct':isCorrect('name'), 'has-error': hasError('name')}">
-                                    <span class="input-group-addon"><i class="icon-card">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="21 3146 34 26"><g data-name="Group 2" transform="translate(0 2907)"><g transform="translate(21 240)"><path data-name="Path 14" d="M3.669 23.559H29.931A3.692 3.692 0 0 0 33.6 19.89V3.669A3.692 3.692 0 0 0 29.931 0H3.669A3.692 3.692 0 0 0 0 3.669V19.89a3.692 3.692 0 0 0 3.669 3.669ZM1.159 3.669a2.506 2.506 0 0 1 2.51-2.51H29.931a2.506 2.506 0 0 1 2.51 2.51V19.89a2.506 2.506 0 0 1-2.51 2.51H3.669a2.506 2.506 0 0 1-2.51-2.51Z"/><path data-name="Path 15" d="M15.145 26.29A7.145 7.145 0 1 0 8 19.145a7.145 7.145 0 0 0 7.145 7.145Zm-4.21-2.9a5.967 5.967 0 0 1 8.419 0 5.959 5.959 0 0 1-4.21 1.738 5.89 5.89 0 0 1-4.21-1.738Zm4.21-3.283a1.73 1.73 0 1 1 1.231-0.507 1.738 1.738 0 0 1-1.231Zm0-6.952A5.975 5.975 0 0 1 20.088 22.5a6.913 6.913 0 0 0-3.244-1.777 2.889 2.889 0 1 0-4.6-2.317 2.785 2.785 0 0 0 1.2 2.317A7.268 7.268 0 0 0 10.2 22.5a5.975 5.975 0 0 1 4.943-9.346Z" transform="translate(-4.91 -7.366)"/><rect data-name="Rectangle 3" width="9.926" height="1.159" transform="translate(19.465 7.338)"/><rect data-name="Rectangle 4" width="9.926" height="1.159" transform="translate(19.465 11.2)"/><rect data-name="Rectangle 5" width="9.926" height="1.159" transform="translate(19.465 15.062)"/></g></g></svg>
-                                    </i></span>
-              <autocomplete
-                :url="searchUrl"
-                anchor="name"
-                label="phone"
-                class-name="form-control"
-                placeholder="Имя или  телефон"
-                :on-select="initCustomer"
-              >
-              </autocomplete>
-              </div>
-
-            </div>
-            <!-- end old client -->
-            <!-- new client -->
-            <form action="?" method="post" novalidate v-if="clientType=='new' || userInfo.id">
-              <button class="btn btn-info btn-lg" @click.prevent="clientType='old'; resetUser">Выбрать клиента</button>
-              <button class="btn btn-danger btn-lg" @click.prevent="resetUser">Очистить</button>
-              <br><br>
-              <hr class="b-line_hr">
-
-              <div class="input-group" :class="{'is-correct':isCorrect('name'), 'has-error': hasError('name')}">
-                                    <span class="input-group-addon"><i class="icon-card">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="21 3146 34 26"><g data-name="Group 2" transform="translate(0 2907)"><g transform="translate(21 240)"><path data-name="Path 14" d="M3.669 23.559H29.931A3.692 3.692 0 0 0 33.6 19.89V3.669A3.692 3.692 0 0 0 29.931 0H3.669A3.692 3.692 0 0 0 0 3.669V19.89a3.692 3.692 0 0 0 3.669 3.669ZM1.159 3.669a2.506 2.506 0 0 1 2.51-2.51H29.931a2.506 2.506 0 0 1 2.51 2.51V19.89a2.506 2.506 0 0 1-2.51 2.51H3.669a2.506 2.506 0 0 1-2.51-2.51Z"/><path data-name="Path 15" d="M15.145 26.29A7.145 7.145 0 1 0 8 19.145a7.145 7.145 0 0 0 7.145 7.145Zm-4.21-2.9a5.967 5.967 0 0 1 8.419 0 5.959 5.959 0 0 1-4.21 1.738 5.89 5.89 0 0 1-4.21-1.738Zm4.21-3.283a1.73 1.73 0 1 1 1.231-0.507 1.738 1.738 0 0 1-1.231Zm0-6.952A5.975 5.975 0 0 1 20.088 22.5a6.913 6.913 0 0 0-3.244-1.777 2.889 2.889 0 1 0-4.6-2.317 2.785 2.785 0 0 0 1.2 2.317A7.268 7.268 0 0 0 10.2 22.5a5.975 5.975 0 0 1 4.943-9.346Z" transform="translate(-4.91 -7.366)"/><rect data-name="Rectangle 3" width="9.926" height="1.159" transform="translate(19.465 7.338)"/><rect data-name="Rectangle 4" width="9.926" height="1.159" transform="translate(19.465 11.2)"/><rect data-name="Rectangle 5" width="9.926" height="1.159" transform="translate(19.465 15.062)"/></g></g></svg>
-                                    </i></span>
-                <input type="text" id="frm-user_data_name_first" v-model="userInfo.name" required class="form-control">
-                <label for="frm-user_data_name_first" class="text-danger">Имя<span
-                  class="error_text">Введите значение</span></label>
-                <i class="icon-v">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="319.396 3946.679 23.204 18.823">
-                    <g transform="translate(244 4221.001)">
-                      <g data-name="Group 32" transform="translate(45 -1263.183)">
-                        <path data-name="Path 48"
-                              d="M51.1,989.748l-12.613,14.244-5.59-5.4a1.085,1.085,0,0,0-1.642.182,1.62,1.62,0,0,0,.154,1.939l6.388,6.169a1.066,1.066,0,0,0,1.543-.064l13.357-15.08a1.6,1.6,0,0,0,.278-1.578c-.526-1.006-1.2-.969-1.875-.414Z"
-                              transform="translate(0 0)"/>
-                      </g>
-                    </g>
-                  </svg>
-                </i>
-                <i class="icon-x spt spt-icon_x_31x33"></i>
-              </div>
-              <div class="input-group"  :class="{'is-correct':isCorrect('phone'), 'has-error': hasError('phone')}">
-                                    <span class="input-group-addon"><i class="icon-phone">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="20 3344 26 33"><g data-name="Group 202" transform="translate(-5 2910)"><g transform="translate(-3 410.333)"><g data-name="Group 14" transform="translate(30.284 24.668)"><g data-name="Group 13"><path data-name="Path 20" class="cls-2" d="M42.281,33.776a.178.178,0,0,0,.2.088l2.23-.5a.178.178,0,0,0,.112-.079.176.176,0,0,0,.023-.135l-1.864-8.345A.182.182,0,0,0,42.9,24.7a.174.174,0,0,0-.134-.024l-2.232.5a.179.179,0,0,0-.112.079.186.186,0,0,0-.023.135l1.865,8.345A.193.193,0,0,0,42.281,33.776Z" transform="translate(-34.374 -24.668)"/><path data-name="Path 21" class="cls-2" d="M50.808,54.971l-5.676-5.737a.178.178,0,0,0-.211-.031l-.747.41c-.887.485-2.676.448-3.2-.515L35.151,38.472c-.528-.963.4-2.491,1.291-2.976l.747-.41a.177.177,0,0,0,.088-.2L35.5,27.019a.178.178,0,0,0-.312-.075c-.144.174-3.54,4.268-4.234,5.949-1.408,3.408-.594,7.924,2.418,13.422l.032.06c3.012,5.5,6.378,8.615,10.009,9.265,1.79.32,7.068-.337,7.292-.365a.176.176,0,0,0,.146-.118A.178.178,0,0,0,50.808,54.971Z" transform="translate(-30.284 -25.562)"/><path data-name="Path 22" class="cls-2" d="M64.223,66.453a.177.177,0,0,0,.054-.126.186.186,0,0,0-.052-.126L58.2,60.137a.179.179,0,0,0-.252,0l-1.621,1.612a.177.177,0,0,0-.03.212.167.167,0,0,0,.029.04l6.028,6.065a.179.179,0,0,0,.252,0Z" transform="translate(-40.798 -38.997)"/></g></g></g></g></svg></i></span>
-                <masked-input required @input="userInfo.phoneRaw = arguments[1];watchInputData('phone')"  v-model="userInfo.phone" mask="(111)111-11-11" class="form-control" id="frm-user_data_phone" />
-                <label for="frm-user_data_phone" class="text-danger">Номер телефона<span class="error_text">Ввведите значение в формате (920)123-45-67</span></label>
-                <i class="icon-v">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="319.396 3946.679 23.204 18.823">
-                    <g transform="translate(244 4221.001)">
-                      <g data-name="Group 32" transform="translate(45 -1263.183)">
-                        <path data-name="Path 48"
-                              d="M51.1,989.748l-12.613,14.244-5.59-5.4a1.085,1.085,0,0,0-1.642.182,1.62,1.62,0,0,0,.154,1.939l6.388,6.169a1.066,1.066,0,0,0,1.543-.064l13.357-15.08a1.6,1.6,0,0,0,.278-1.578c-.526-1.006-1.2-.969-1.875-.414Z"
-                              transform="translate(0 0)"/>
-                      </g>
-                    </g>
-                  </svg>
-                </i>
-                <i class="icon-x spt spt-icon_x_31x33"></i>
-              </div>
-              <div class="input-group"  :class="{'is-correct':isCorrect('dob'), 'has-error': hasError('dob')}">
-                                    <span class="input-group-addon"><i class="icon-calendar">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="708.91 447 29.68 33.92"><g
-                                      data-name="Group 204" transform="translate(504)"><path data-name="Path 55"
-                                                                                             d="M0 32V52.32a2.72 2.72 0 0 0 2.7 2.75H26.98a2.72 2.72 0 0 0 2.7-2.74V32ZM7.42 53.03h-5.4V47.6h5.4Zm0-6.78h-5.4V40.82h5.4Zm0-6.78h-5.4V34.03h5.4ZM14.17 53.03H8.77V47.6h5.4Zm0-6.78H8.77V40.82h5.4Zm0-6.78H8.77V34.03h5.4ZM20.91 53.03h-5.4V47.6h5.4Zm0-6.78h-5.4V40.82h5.4Zm0-6.78h-5.4V34.03h5.4ZM27.66 53.03h-5.4V47.6h5.4Zm0-6.78h-5.4V40.82h5.4Zm0-6.78h-5.4V34.03h5.4Z"
-                                                                                             transform="translate(204.905 425.854)"/><path
-                                      data-name="Path 56"
-                                      d="M26.98 4.07H22.6V1.02a1.01 1.01 0 1 0-2.02 0V4.07H9.11V1.02a1.01 1.01 0 1 0-2.02 0V4.07H2.7A2.72 2.72 0 0 0 0 6.82V9.16H0V9.5H29.68V9.16h0V6.82A2.72 2.72 0 0 0 26.98 4.07ZM8.1 8.82a2.04 2.04 0 0 1-1.01-3.8v1.76a1.01 1.01 0 1 0 2.02 0V5.02A2.04 2.04 0 0 1 8.1 8.82Zm13.49 0a2.04 2.04 0 0 1-1.01-3.8v1.76a1.01 1.01 0 1 0 2.02 0V5.02a2.04 2.04 0 0 1-1.01 3.8Z"
-                                      transform="translate(204.905 447)"/></g></svg>
-                                    </i></span>
-                <masked-input required @input="watchInputData('dob')"  v-model="userInfo.dob" mask="11.11.1111" class="form-control" id="frm-user_data_birthday" />
-                <label for="frm-user_data_birthday">Дата рождения<span class="error_text">Введите дату в формате дд.мм.гггг</span></label>
-                <i class="icon-v">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="319.396 3946.679 23.204 18.823">
-                    <g transform="translate(244 4221.001)">
-                      <g data-name="Group 32" transform="translate(45 -1263.183)">
-                        <path data-name="Path 48"
-                              d="M51.1,989.748l-12.613,14.244-5.59-5.4a1.085,1.085,0,0,0-1.642.182,1.62,1.62,0,0,0,.154,1.939l6.388,6.169a1.066,1.066,0,0,0,1.543-.064l13.357-15.08a1.6,1.6,0,0,0,.278-1.578c-.526-1.006-1.2-.969-1.875-.414Z"
-                              transform="translate(0 0)"/>
-                      </g>
-                    </g>
-                  </svg>
-                </i>
-                <i class="icon-x spt spt-icon_x_31x33"></i>
-              </div>
-              <div class="input-group"  :class="{'is-correct':isCorrect('email'), 'has-error': hasError('email')}">
-                                    <span class="input-group-addon"><i class="icon-letter">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="533 448 53.783 33.003"><path data-name="Path 54" d="M7.222,975.362A1.233,1.233,0,0,0,6,976.584v30.559a1.233,1.233,0,0,0,1.222,1.222H58.561a1.233,1.233,0,0,0,1.222-1.222V976.584a1.233,1.233,0,0,0-1.222-1.222Zm.955,1.222H57.606L32.892,997.173Zm-.955.783,16.75,13.942-16.75,15.012Zm51.339,0v28.954L41.811,991.31ZM24.908,992.093l7.6,6.341a.611.611,0,0,0,.764,0l7.6-6.341,16.788,15.05H8.12Z" transform="translate(527 -527.362)"/></svg>
-                                    </i></span>
-                <input @input="watchInputData('email')" type="text" id="frm-user_data_email" v-model="userInfo.email" required class="form-control">
-                <label for="frm-user_data_email">E-mail<span
-                  class="error_text">Please, enter correct value</span></label>
-                <i class="icon-v">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="319.396 3946.679 23.204 18.823">
-                    <g transform="translate(244 4221.001)">
-                      <g data-name="Group 32" transform="translate(45 -1263.183)">
-                        <path data-name="Path 48"
-                              d="M51.1,989.748l-12.613,14.244-5.59-5.4a1.085,1.085,0,0,0-1.642.182,1.62,1.62,0,0,0,.154,1.939l6.388,6.169a1.066,1.066,0,0,0,1.543-.064l13.357-15.08a1.6,1.6,0,0,0,.278-1.578c-.526-1.006-1.2-.969-1.875-.414Z"
-                              transform="translate(0 0)"/>
-                      </g>
-                    </g>
-                  </svg>
-                </i>
-                <i class="icon-x spt spt-icon_x_31x33"></i>
-              </div>
-
-              <h2 class="text-info">Дети</h2>
-              <div class="input-group" >
-                  <select class="form-control" v-model="userInfo.kids">
-                    <option value="0">Нет</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                  </select>
-              </div>
-              <h2 class="text-info">Комментарий</h2>
-              <div class="input-group" >
-                <textarea class="form-control" v-model="userInfo.visitComment">
-                </textarea>
-              </div>
-
-              <button @click="submitForm" type="button" class="btn-default btn-submit" v-show="formIsValid()"><i class="icon-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="524 1480.316 21.891 19.197">
-                  <g transform="translate(524 1480.316)">
-                    <path data-name="Path 96" d="M10.045,2.23A13.707,13.707,0,0,0,3.6,7.579H8.893Z" transform="translate(-2.082 -1.195)"/>
-                    <path data-name="Path 97" d="M13.008-.24a12.579,12.579,0,0,0-1.485.1l-.262,1.223L10.17,6.144h7.2l-.291,1.366-.35,1.634h-7.2L8.145,15.581H4.771l1.088-5.064.3-1.366H.258A.975.975,0,0,1,.2,9.361c-1.139,5.311,2.754,9.6,8.68,9.6S20.55,14.643,21.693,9.323,18.943-.248,13.008-.24Z" transform="translate(-0.001 0.24)"/>
-                  </g>
-                </svg>
-              </i>Подтвердить запись</button>
-            </form>
-            <!-- END new client -->
-          </div>
-          <!-- /step 2 -->
-        </template>
-      </div>
-    </div>
-  </div>
-  </div>
-</section>
+</div>
+</div>

@@ -5,7 +5,7 @@
  * All the actions that can be used
  * inside the store
  */
-// import * as types from './mutation-types';
+import * as types from './mutation-types';
 
 // Common
 export const commonError = ({ commit }, err) => {
@@ -13,6 +13,6 @@ export const commonError = ({ commit }, err) => {
   console.error(err);
 };
 
-export const dummy = () => {
-
+export const showAlert = ({ commit }, message) => {
+  commit(types.SHOW_ALERT, message);
 };

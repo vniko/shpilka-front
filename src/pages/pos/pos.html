@@ -1,0 +1,75 @@
+<v-layout>
+<section slot="content">
+  <div class="row">
+    <div class="col-md-6">
+      <template v-for="cat in categories">
+        <h4 class="sub-title space-top space-bottom"><i :class="cat.icon_class"></i> {{ cat.name }}</h4>
+        <div class="row">
+          <div class="col-sm-6 col-md-4" v-for="p in cat.products">
+            <a href="#" class="btn btn-primary pill" @click.prevent="addToCart(p)">{{ p.name }}</a>
+            <!--<div :class="cat.block_class" >-->
+              <!--<div class="card-block">-->
+                <!--<h5 class="card-title"></h5>-->
+                <!--&lt;!&ndash;<p class="card-text">{{ p.description }}</p>-->
+                <!---->
+              <!--</div>&lt;!&ndash; / card-block &ndash;&gt;-->
+            <!--</div>&lt;!&ndash; / card &ndash;&gt;-->
+          <!--</div>&lt;!&ndash; / column &ndash;&gt;-->
+          </div>
+        </div>
+      </template>
+    </div>
+    <div class="col-md-6">
+      <h4 v-show="countOrderLines" class="sub-title space-top space-bottom">Содержание чека</h4>
+      <table class="table" v-show="countOrderLines">
+        <thead class="thead-inverse">
+        <tr>
+          <th width="40">#</th>
+          <th width="80%">Позиция</th>
+          <th>Количество</th>
+          <th>Скидка %</th>
+          <th>Сумма</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(line, productId, index) in orderLines">
+          <td>{{ index + 1 }}</td>
+          <td>{{line.product.name}}</td>
+          <td nowrap="">
+            <button  class="btn btn-outline-secondary"  @click.prevent="decrementLineQty(line)"><i class="fa fa-arrow-down"></i></button>
+            <button class="btn-outline-primary btn-circle">{{line.qty}}</button>
+            <button  @click.prevent="incrementLineQty(line)" class="btn btn-outline-secondary"><i class="fa fa-arrow-up"></i></button>
+            <div class="text-center">
+            <button class="btn btn-outline-danger btn-xs" @click.prevent="confirmDeleteLine(line.product.id)"><i class="fa fa-trash-o"></i> удалить</button>
+            </div>
+          </td>
+          <td nowrap="">
+            <button @click.prevent="decrementLineDiscount(line)" class="btn btn-outline-secondary"><i class="fa fa-arrow-down"></i></button>
+            <button class="btn-outline-success btn-circle">{{line.discount_perc}}</button>
+            <button @click.prevent="incrementLineDiscount(line)" class="btn btn-outline-secondary"><i class="fa fa-arrow-up"></i></button>
+          </td>
+          <td>{{line.total}}</td>
+        </tr>
+
+        </tbody>
+      </table>
+      <hr />
+      <div  v-show="countOrderLines">
+      <h4 class="sub-title space-top space-bottom">Итого: <span class="badge badge-primary">{{ total }}</span></h4>
+      <h4 class="sub-title space-top space-bottom">Скидка: <span class="badge badge-primary">{{ totalDiscount }}</span></h4>
+      </div>
+
+      <h3 class="text-danger"  v-show="countOrderLines">Данные клиента</h3>
+      <client-chooser :hasKids="false"  v-show="countOrderLines" v-model="clientInfo"></client-chooser>
+
+      <div class="text-center"  v-show="countOrderLines && hasClient">
+        <br><hr>
+        <button @click.prevent="submitOrder" class="btn btn-warning btn-lg">Оформить</button>
+      </div>
+
+    </div>
+  </div>
+  <simplert ref="deleteProduct" ></simplert>
+</section>
+</v-layout>
+

@@ -1,5 +1,5 @@
 {
-  "name": "lasikplus-ischedule",
+  "name": "shpilkaCRM-frontend",
   "private": true,
   "version": "0.0.0",
   "description": "",
@@ -20,7 +20,8 @@
     "vue-masked-input": "^0.5.2",
     "vue-router": "^2.5.1",
     "vue-touch": "next",
-    "vue2-autocomplete-js": "^0.0.4",
+    "vue2-autocomplete-js": "0.2.2",
+    "vue2-simplert": "^0.5.3",
     "vuejs-datepicker": "^0.9.1",
     "vuex": "^2.3.1",
     "vuex-router-sync": "^4.1.2"

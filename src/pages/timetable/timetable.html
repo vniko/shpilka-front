@@ -3,11 +3,11 @@
   <div class="row">
     <div class="col-md"  @click="hideDatePicker()">
 
-      <h1>Лист записи на <span @click.stop="showDatePicker=!showDatePicker" class="badge badge-info" title="Сменить дату">&laquo;{{chosenFullDate}}&raquo;</span></h1>
-      <datepicker :bootstrapStyling="true" :monday-first="true"  :value="chosenDate" v-show="showDatePicker" :inline="true" language="ru"></datepicker>
+      <a href="#" @click.prevent="$router.go(-1)"><i class="fa fa-backward"></i> назад</a> <h1>Лист записи на <span @click.stop="showDatePicker=!showDatePicker" class="badge badge-info" title="Сменить дату">&laquo;{{chosenFullDate}}&raquo;</span></h1>
+      <datepicker :bootstrapStyling="true" :monday-first="true" v-on:selected="selectDate"  v-model="chosenDate" v-show="showDatePicker" :inline="true" language="ru"></datepicker>
 
       <div v-for="(timeRows, time) in timeTable">
-        <h2><span  class="badge badge-success">{{ time }}</span></h2>
+        <h2 style="font-size: x-large" class="badge badge-success">{{ time }} <router-link :to="{name:'details', params: { departmentId: departmentInfo.id, masterId: 0, date:chosenDate, time:  time }}" class="btn btn-success"  title="Записать на это время"><i class="fa fa-plus-circle"></i></router-link></h2>
         <table class="table table-bordered table-hover">
           <thead>
             <tr>

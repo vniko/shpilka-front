@@ -10,7 +10,7 @@ import {
   SET_DEPARTMENT,
   SET_MASTER,
   SET_TIMETABLE,
-} from './../../mutation-types';
+} from './mutation-types';
 
 export default {
   [SET_DATES](state, data) {

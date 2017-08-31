@@ -1,0 +1,87 @@
+<v-layout>
+<section slot="content" class="c-booking"  :class="{'has-time_selector': $route.name == 'schedule', 'has-user_data': $route.name != 'schedule'}">
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-md b-calendar_col">
+      <div class="b-calendar">
+        <p class="title d-flex align-items-center justify-content-center">
+          <span class="icon-calendar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="708.91 447 29.68 33.92"><g
+            data-name="Group 204" transform="translate(504)"><path data-name="Path 55"
+                                                                   d="M0 32V52.32a2.72 2.72 0 0 0 2.7 2.75H26.98a2.72 2.72 0 0 0 2.7-2.74V32ZM7.42 53.03h-5.4V47.6h5.4Zm0-6.78h-5.4V40.82h5.4Zm0-6.78h-5.4V34.03h5.4ZM14.17 53.03H8.77V47.6h5.4Zm0-6.78H8.77V40.82h5.4Zm0-6.78H8.77V34.03h5.4ZM20.91 53.03h-5.4V47.6h5.4Zm0-6.78h-5.4V40.82h5.4Zm0-6.78h-5.4V34.03h5.4ZM27.66 53.03h-5.4V47.6h5.4Zm0-6.78h-5.4V40.82h5.4Zm0-6.78h-5.4V34.03h5.4Z"
+                                                                   transform="translate(204.905 425.854)"/><path
+            data-name="Path 56"
+            d="M26.98 4.07H22.6V1.02a1.01 1.01 0 1 0-2.02 0V4.07H9.11V1.02a1.01 1.01 0 1 0-2.02 0V4.07H2.7A2.72 2.72 0 0 0 0 6.82V9.16H0V9.5H29.68V9.16h0V6.82A2.72 2.72 0 0 0 26.98 4.07ZM8.1 8.82a2.04 2.04 0 0 1-1.01-3.8v1.76a1.01 1.01 0 1 0 2.02 0V5.02A2.04 2.04 0 0 1 8.1 8.82Zm13.49 0a2.04 2.04 0 0 1-1.01-3.8v1.76a1.01 1.01 0 1 0 2.02 0V5.02a2.04 2.04 0 0 1-1.01 3.8Z"
+            transform="translate(204.905 447)"/></g></svg></span>
+          <span><b v-if="departmentInfo">&laquo;{{ departmentInfo.title }}&raquo; </b>  Запись </span></p>
+        <p class="title_date hidden-md-up">Выберите дату</p>
+        <div class="b-month_selector">
+          <button type="button" class="btn-action" v-show="prevMonthAvailable" @click="movePrevMonth()">&lt;</button>
+          <span class="month"><b>{{thisMonthName}} {{thisYear}}</b></span>
+          <button type="button" class="btn-action" v-show="nextMonthAvailable" @click="moveNextMonth()">&gt;</button>
+        </div>
+        <div class="b-date_selector clearfix">
+          <div class="date"><span>Пн</span></div>
+          <div class="date"><span>Вт</span></div>
+          <div class="date"><span>Ср</span></div>
+          <div class="date"><span>Чт</span></div>
+          <div class="date"><span>Пт</span></div>
+          <div class="date"><span>Сб</span></div>
+          <div class="date"><span>Вс</span></div>
+          <div class="date" v-for="ed in firstDayThisMonthWeekDay">&nbsp;</div>
+          <div class="date" v-for="day in lastDayThisMonth">
+            <button type="button" @click="chooseDate(day)" v-if="isDateAvailable(day)"
+                    :class="{'is-active': isChosenDate(day)}" @mouseout="resetHoverDay" @mouseover="hoverDay(day)">{{ day }}            </button>
+            <button type="button" v-else disabled>{{ day }}</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md b-booking_col">
+        <div class="alert text-center" :class="{'alert-danger': (dateInfo.capacity <= dateInfo.occupied), 'alert-success': (dateInfo.capacity > dateInfo.occupied)}"  v-if="dateInfo">
+
+          <h1 v-if="chosenTime && chosenDate">{{ chosenFullDate }} @ {{ chosenTime }}</h1>
+          <strong>Доступно для записи:</strong> {{dateInfo.capacity - dateInfo.occupied}}.<br><br>
+          <button @click="gotoTimeTable()" type="button" class="btn btn-primary"><i class="fa fa-list"></i> Посмотреть лист записи</button>
+        </div>
+
+
+      <div class="b-booking" :class="{'has-time_selector': $route.name == 'schedule'}" v-show="chosenDate">
+        <template v-if="$route.name == 'schedule'">
+          <!-- step 1 -->
+          <div class="b-time_selector" :class="{'is-selected':chosenDate}">
+            <p class="title">Выберите время на дату &laquo;{{ chosenFullDate }}&raquo;</p>
+            <div class="l-times clearfix">
+              <button type="button" @click="chooseTime(timeInfo, time)" class="time" :class="{'is-active': chosenTime == time}"
+                      v-for="(timeInfo, time) in availableTimes">{{ time }}<br>
+                <span class="text-success"> Мест: {{timeInfo.available - timeInfo.occupied}}</span>
+              </button>
+            </div>
+            <div class="b-confirm" v-show="chosenTime">
+
+              <!--<button type="button" @click="goToDetails" class="btn-default btn-next_step" v-if="chosenTime"><i-->
+                <!--class="fa fa-plus"></i> Записать-->
+              <!--</button><br><br>-->
+              <hr class="b-line_hr">
+              <client-chooser v-model="userInfo"></client-chooser>
+
+              <button @click="submitForm" type="button" class="btn-default btn-submit" v-show="formIsValid()"><i class="icon-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="524 1480.316 21.891 19.197">
+                  <g transform="translate(524 1480.316)">
+                    <path data-name="Path 96" d="M10.045,2.23A13.707,13.707,0,0,0,3.6,7.579H8.893Z" transform="translate(-2.082 -1.195)"/>
+                    <path data-name="Path 97" d="M13.008-.24a12.579,12.579,0,0,0-1.485.1l-.262,1.223L10.17,6.144h7.2l-.291,1.366-.35,1.634h-7.2L8.145,15.581H4.771l1.088-5.064.3-1.366H.258A.975.975,0,0,1,.2,9.361c-1.139,5.311,2.754,9.6,8.68,9.6S20.55,14.643,21.693,9.323,18.943-.248,13.008-.24Z" transform="translate(-0.001 0.24)"/>
+                  </g>
+                </svg>
+              </i>Подтвердить запись</button>
+
+            </div>
+          </div>
+          <!-- /step 1 -->
+        </template>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+</v-layout>

@@ -2,8 +2,8 @@ import Vue from 'vue';
 import store from './../../store';
 
 const success = (result) => {
-  store.dispatch('setTimeTable', result.data.timeTable);
-  store.dispatch('setDepartment', result.data.department);
+  store.dispatch('schedule/setTimeTable', result.data.timeTable);
+  store.dispatch('schedule/setDepartment', result.data.department);
 };
 
 const failed = (result) => {

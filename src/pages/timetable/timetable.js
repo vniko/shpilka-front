@@ -57,7 +57,12 @@ export default {
   },
   methods: {
     deleteAppointment(id) {
-
+      ScheduleService.deleteAppointment(id).then(() => {
+        ScheduleService.getTimeTable(this.departmentInfo.id, this.chosenDate);
+      })
+        .catch((error) => {
+          console.error(error);
+        });
     },
     hideDatePicker() {
       if (this.showDatePicker) {
@@ -74,6 +79,9 @@ export default {
       this.currentApptId = null;
       this.currentApptTime = null;
       this.newApptTime = '';
+    },
+    selectDate(val) {
+      ScheduleService.getTimeTable(this.departmentInfo.id, moment(val).format('YYYY-MM-DD'));
     },
     showTransferModal(id, time) {
       this.currentApptId = id;
