@@ -1,0 +1,30 @@
+v-layout
+  section(slot="content")
+    h4.sub-title.space-top.space-bottom Список продаж
+    .col-lg-4
+      datepicker(
+        :bootstrapStyling="true",
+        :monday-first="true",
+        v-on:selected="selectDate",
+        v-model="chosenDate",
+        language="ru",
+        input-class="bg-primary text-white"
+      )
+    table.table.table-striped
+      thead
+        tr
+        th(width="150") Дата/Время
+        th Клиент
+        th(width="100") Сумма
+        th(width="200") Действия
+      tbody
+        tr(v-for="order in orders", :class="{'is-deleted': order.is_deleted}")
+          td {{ order.date }}
+          td {{ order.client }}
+          td {{ order.total }}
+          td
+            button.btn.btn-danger(@click="deleteOrder(order)", v-if="!order.is_deleted")
+              i.fa.fa-trash-o
+              | &nbsp; Отменить
+            span.badge.badge-warning(v-if="order.is_deleted") Отменено
+

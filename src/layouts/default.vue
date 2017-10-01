@@ -4,14 +4,17 @@
     <div class="container full-width">
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto mr-0">
-          <li class="nav-item">
-            <a class="nav-link" href="#schedule/1">Запись</a>
+          <li class="nav-item"  :class="{active: $route.name=='schedule'}">
+            <a class="nav-link badge"  :class="{'badge-primary': $route.name=='schedule'}"  href="#schedule/1">Запись</a>
+          </li>
+          <li class="nav-item" :class="{active: $route.name=='pos'}" >
+            <a class="nav-link badge" :class="{'badge-primary': $route.name=='pos'}" href="#pos">Продажа</a>
+          </li>
+          <li class="nav-item" :class="{active: $route.name=='pos-history'}">
+            <a class="nav-link badge"  :class="{'badge-primary': $route.name=='pos-history'}"  href="#pos-history">История продаж</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#pos">Продажа</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#x">Учет посещений</a>
+            <a class="nav-link badge" href="#x">Учет посещений</a>
           </li>
 
         </ul>
@@ -56,3 +59,6 @@ export default {
   },
 };
 </script>
+<style>
+  .navbar .badge {font-size: 1rem}
+</style>

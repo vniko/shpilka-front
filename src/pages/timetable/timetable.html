@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md"  @click="hideDatePicker()">
 
-      <a href="#" @click.prevent="$router.go(-1)"><i class="fa fa-backward"></i> назад</a> <h1>Лист записи на <span @click.stop="showDatePicker=!showDatePicker" class="badge badge-info" title="Сменить дату">&laquo;{{chosenFullDate}}&raquo;</span></h1>
+      <a href="#" @click.prevent="$router.go(-1)" class="btn btn-outline-black"><i class="fa fa-backward"></i> назад</a> <h1>Лист записи на <span @click.stop="showDatePicker=!showDatePicker" class="badge badge-info" title="Сменить дату">&laquo;{{chosenFullDate}}&raquo;</span></h1>
       <datepicker :bootstrapStyling="true" :monday-first="true" v-on:selected="selectDate"  v-model="chosenDate" v-show="showDatePicker" :inline="true" language="ru"></datepicker>
 
       <div v-for="(timeRows, time) in timeTable">

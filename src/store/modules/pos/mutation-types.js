@@ -1,2 +1,2 @@
 export const SET_CATEGORIES = 'SET_CATEGORIES';
-export const DUMMY = 'DUMMY';
+export const SET_ORDERS = 'SET_ORDERS';

@@ -15,6 +15,8 @@ export default {
     return {
       orderLines: {},
       clientInfo: {},
+      clientIsValid: false,
+      currentOrder: null,
     };
   },
   components: {
@@ -95,34 +97,82 @@ export default {
       console.log('DELETE LINE');
       Vue.delete(this.orderLines, productId);
     },
+    deleteOrder() {
+      const conf = {
+        title: 'Удалить продажу?',
+        message: 'Вы собираетесь удалить только что созданный заказ',
+        type: 'warning',
+        customCloseBtnText: 'Ой, отменяем (',
+        customCloseBtnClass: 'btn btn-default',
+        useConfirmBtn: true,
+        customConfirmBtnText: 'Да-да',
+        customConfirmBtnClass: 'btn btn-danger',
+        onConfirm: () => {
+          PosService.deleteOrder(this.order).then(() => {
+            this.makeNewOrder();
+          });
+        },
+      };
+      this.$refs.deleteProduct.openSimplert(conf);
+    },
     incrementLineDiscount (line) {
       line.discount_perc += 1;
       this.recalcLine(line);
     },
-    hasClient() {
-      return this.clientInfo.name && this.clientInfo.phoneRaw;
-    },
+
     incrementLineQty(line) {
       line.qty += 1;
       this.recalcLine(line);
+    },
+    makeNewOrder() {
+      this.orderLines = {};
+      this.order = null;
+      this.clientInfo = {};
     },
     recalcLine(line) {
       line.total = (line.product.price * line.qty);
       line.total -= Math.round(line.total / 100 * line.discount_perc, 0);
     },
     submitOrder() {
-      PosService.submitOrder(
-        {
-          total: this.total,
-          total_discount: this.totalDiscount,
-          lines: this.orderLines,
-          clientInfo: {...this.clientInfo, phone: this.clientInfo.phoneRaw,id: this.clientInfo.id ? this.clientInfo.id : null},
-        }
-      ).then((response) => {
-        console.log(response.data);
+      if (this.clientInfo.hasOwnProperty('name') && this.clientInfo.name
+        && this.clientInfo.hasOwnProperty('phoneRaw') && this.clientInfo.phoneRaw.indexOf('_') === -1) {
+        PosService.submitOrder(
+          {
+            total: this.total,
+            total_discount: this.totalDiscount,
+            lines: this.orderLines,
+            clientInfo: {
+              ...this.clientInfo,
+              phone: this.clientInfo.phoneRaw,
+              id: this.clientInfo.id ? this.clientInfo.id : null
+            },
+          }
+        ).then((response) => {
+          this.order = response.data.data;
+          this.clientInfo = null;
+          const conf = {
+            title: 'Продажа завершена',
+            message: 'Что делаем дальше?',
+            type: 'success',
+            customCloseBtnText: 'Ой, отменяем (',
+            customCloseBtnClass: 'btn btn-danger',
+            useConfirmBtn: true,
+            customConfirmBtnText: 'Новый заказ',
+            customConfirmBtnClass: 'btn btn-success',
+            onConfirm: () => {
+              this.makeNewOrder();
+            },
+            onClose: () => {
+              this.deleteOrder();
+            },
+          };
+          this.$refs.deleteProduct.openSimplert(conf);
         }).catch((error) => {
-        console.log(error);
+          console.log(error);
         });
+      } else {
+        this.$store.dispatch('showAlert', 'Заполните данные клиента');
+      }
     },
   },
 };

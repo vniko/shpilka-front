@@ -134,6 +134,7 @@ export default {
         kids: '0',
         visitComment: null,
       };
+      this.clientType = null;
       this.$emit('input', this.clientInfo);
     },
     watchInputData() {
@@ -141,6 +142,13 @@ export default {
     },
     wasInput(index) {
       return this.wasInputData.hasOwnProperty(index);
+    },
+  },
+  watch: {
+    value(val) {
+      if (!val) {
+        this.resetUser();
+      }
     },
   },
   mounted() {

@@ -4,6 +4,7 @@ export const setCategories = ({ commit }, data) => {
   commit(types.SET_CATEGORIES, data);
 };
 
-export const dummy = () => {
+export const setOrders = ({ commit }, data) => {
+  commit(types.SET_ORDERS, data);
 };
 

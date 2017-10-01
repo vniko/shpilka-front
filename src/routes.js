@@ -6,6 +6,7 @@
  */
 import ScheduleService from '@/services/schedule';
 import PosService from '@/services/pos';
+import moment from 'moment';
 /**
  * The routes
  *
@@ -60,6 +61,20 @@ export default [
     },
     meta: {
       auth: true,
+    },
+  },
+  // POS-history
+  {
+    path: '/pos-history',
+    name: 'pos-history',
+    component: require('./pages/pos-history/pos-history.vue'),
+    beforeEnter: (to, from, next) => {
+      PosService.getOrders({ filters: { date: moment().format('YYYY-MM-DD') } });
+      next();
+    },
+    meta: {
+      auth: true,
+      is_admin: true,
     },
   },
   // time table

@@ -5,16 +5,8 @@
       <template v-for="cat in categories">
         <h4 class="sub-title space-top space-bottom"><i :class="cat.icon_class"></i> {{ cat.name }}</h4>
         <div class="row">
-          <div class="col-sm-6 col-md-4" v-for="p in cat.products">
-            <a href="#" class="btn btn-primary pill" @click.prevent="addToCart(p)">{{ p.name }}</a>
-            <!--<div :class="cat.block_class" >-->
-              <!--<div class="card-block">-->
-                <!--<h5 class="card-title"></h5>-->
-                <!--&lt;!&ndash;<p class="card-text">{{ p.description }}</p>-->
-                <!---->
-              <!--</div>&lt;!&ndash; / card-block &ndash;&gt;-->
-            <!--</div>&lt;!&ndash; / card &ndash;&gt;-->
-          <!--</div>&lt;!&ndash; / column &ndash;&gt;-->
+          <div class="col-lg-12">
+            <a href="#" style="margin-right: 15px;" class="btn pill" :class="cat.product_class" @click.prevent="addToCart(p)"  v-for="p in cat.products">{{ p.name }}</a>
           </div>
         </div>
       </template>
@@ -62,7 +54,7 @@
       <h3 class="text-danger"  v-show="countOrderLines">Данные клиента</h3>
       <client-chooser :hasKids="false"  v-show="countOrderLines" v-model="clientInfo"></client-chooser>
 
-      <div class="text-center"  v-show="countOrderLines && hasClient">
+      <div class="text-center"  v-show="countOrderLines">
         <br><hr>
         <button @click.prevent="submitOrder" class="btn btn-warning btn-lg">Оформить</button>
       </div>
