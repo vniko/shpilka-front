@@ -75,6 +75,10 @@ export default {
     },
     firstDayThisMonthWeekDay () {
       this.nowDate.setDate(1);
+      // console.log('AAAA = ', this.nowDate.getDay() - 1);
+      if (this.nowDate.getDay() === 0) {
+        return 6;
+      }
       return this.nowDate.getDay() - 1;
     },
     lastDayThisMonth () {

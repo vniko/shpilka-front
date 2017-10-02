@@ -27,7 +27,7 @@
           <div class="date"><span>Пт</span></div>
           <div class="date"><span>Сб</span></div>
           <div class="date"><span>Вс</span></div>
-          <div class="date" v-for="ed in firstDayThisMonthWeekDay">&nbsp;</div>
+          <div class="date" v-for="ed in firstDayThisMonthWeekDay" v-if="firstDayThisMonthWeekDay">&nbsp;</div>
           <div class="date" v-for="day in lastDayThisMonth">
             <button type="button" @click="chooseDate(day)" v-if="isDateAvailable(day)"
                     :class="{'is-active': isChosenDate(day)}" @mouseout="resetHoverDay" @mouseover="hoverDay(day)">{{ day }}            </button>
