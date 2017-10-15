@@ -415,7 +415,7 @@ body > :first-child {
 
 .c-booking .b-booking .b-time_selector .l-times .time {
   background: #fff;
-  border: 5PX solid #5d86c4;
+  border: 5PX solid #fff;
   color: #385d92;
   cursor: pointer;
   float: left;
@@ -438,6 +438,10 @@ body > :first-child {
   font-size: 2rem;
   font-weight: 300;
   margin: 0 0 1rem;
+}
+
+.b-user_data {
+  padding-bottom: 40px;
 }
 
 .b-user_data address {
@@ -540,7 +544,8 @@ body > :first-child {
   font-weight: 300;
   height: 5.25rem;
   padding-bottom: 0;
-  padding-left: 1.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 
@@ -672,7 +677,7 @@ body > :first-child {
 }
 
 .c-booking.has-time_selector .b-booking {
-  background-color: #5d86c4;
+  background-color: white;
   color: #fff;
   padding: 1rem 1rem 0 1rem;
 }
@@ -716,12 +721,12 @@ body > :first-child {
   color: currentColor;
   display: block;
   font: inherit;
-  height: 3.625rem;
-  line-height: 3.625rem;
+  height: 2.625rem;
+  line-height: 2.625rem;
   margin: 0 auto;
   padding: 0;
   position: relative;
-  width: 3.625rem;
+  width: 2.625rem;
 }
 
 .c-booking .b-calendar .b-date_selector .date button.is-active,
@@ -837,7 +842,7 @@ body > :first-child {
 }
 
 .c-booking .b-confirmation .b-details {
-  background-color: #5d86c4;
+  background-color: white;
   color: #fff;
   margin: 0 -2.222rem;
   padding: 4.074rem 2.222rem 2.222rem;

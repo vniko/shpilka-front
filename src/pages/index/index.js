@@ -10,4 +10,9 @@ export default {
     return {
     };
   },
+  computed: {
+    user() {
+      return this.$store.state.auth.user;
+    },
+  },
 };

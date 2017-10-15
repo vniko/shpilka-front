@@ -1,4 +1,4 @@
 module.exports = {
   NODE_ENV: '"production"',
-  API_LOCATION: '"http://shpilka.app/api/"',
+  API_LOCATION: '"http://sol-nu.ru/api/"',
 };

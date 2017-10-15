@@ -58,6 +58,10 @@ import store from './store';
 
 store.dispatch('auth/check');
 
+if (!store.state.auth.user) {
+  AuthService.getUser();
+}
+
 /* ============
  * Vue touch
  * ============
@@ -94,6 +98,16 @@ export const router = new VueRouter({
 });
 router.beforeEach((to, from, next) => {
   if (to.matched.some(m => m.meta.auth) && !store.state.auth.authenticated) {
+    /*
+     * If the user is not authenticated and visits
+     * a page that requires authentication, redirect to the login page
+     */
+    next({
+      name: 'login',
+    });
+  } else if (to.matched.some(m => m.meta.admin) &&
+    ((store.state.auth.user && !store.state.auth.user.is_admin)
+      || !store.state.auth.user)) {
     /*
      * If the user is not authenticated and visits
      * a page that requires authentication, redirect to the login page

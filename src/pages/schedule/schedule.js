@@ -21,7 +21,7 @@ export default {
       },
       months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
       monthOffset: 0,
-      dateFromRoute: false,
+      dateFromRoute: true,
       chosenDate: null,
       chosenTime: null,
       timeInfo: null,
@@ -32,6 +32,8 @@ export default {
         dob: null,
         phone: null,
         kids: '0',
+        kidsAfter7: '0',
+        adults: '1',
         visitComment: null,
       },
     };
@@ -114,11 +116,7 @@ export default {
       this.timeInfo = timeInfo;
     },
     formIsValid () {
-      console.log(this.userInfo);
-      return this.isCorrect('name')
-        && this.isCorrect('phone')
-        && this.isCorrect('dob')
-        && this.isCorrect('email');
+      return this.isCorrect('name') && this.isCorrect('phone') && this.chosenTime;
     },
     getDateInfo (day) {
       if (!this.availableDates) {
@@ -151,16 +149,25 @@ export default {
       this.hoverDateInfo = this.getDateInfo(day);
     },
     initDate () {
-      if (this.availableDates && this.chosenDate) {
+      if (this.availableDates && this.chosenDate && this.availableDates.hasOwnProperty(this.chosenDate)) {
         this.availableTimes = this.availableDates[this.chosenDate].times;
         this.dateInfo = this.availableDates[this.chosenDate];
       }
     },
     initDateFromRoute () {
-      this.dateFromRoute = true;
-      if (this.$route.params.date) {
+      if (this.$route.params.date && this.dateFromRoute) {
+
+        console.log('init date from route');
+
         this.chosenDate = this.$route.params.date;
+        const now = new Date();
+        const nowMonth = now.getMonth();
+
+        const dateMonth = moment(this.chosenDate).get('month');
+        this.monthOffset =  dateMonth - nowMonth;
+
         this.initDate();
+        this.dateFromRoute = false;
       }
       if (this.$route.params.time) {
         this.chosenTime = this.$route.params.time;
@@ -177,7 +184,7 @@ export default {
           }
           break;
         case 'phone':
-          if (this.userInfo.phoneRaw.indexOf('_') === -1) {
+          if (this.userInfo && this.userInfo.hasOwnProperty('phoneRaw') && this.userInfo.phoneRaw.indexOf('_') === -1) {
             return true;
           }
           break;
@@ -227,18 +234,30 @@ export default {
       return index === this.chosenDate;
     }
     ,
-    moveNextMonth () {
+    moveNextMonth() {
       this.chosenDate = null;
       this.chosenTime = null;
       this.timeInfo = null;
       this.monthOffset += 1;
+      const now = new Date();
+      if (this.monthOffset !== 0) {
+        const month = now.getMonth() + this.monthOffset;
+        now.setMonth(month);
+      }
+      ScheduleService.getDates(this.departmentInfo.id, this.masterInfo.id, moment(now).format('YYYY-MM-DD'));
     }
     ,
-    movePrevMonth () {
+    movePrevMonth() {
       this.chosenDate = null;
       this.chosenTime = null;
       this.timeInfo = null;
       this.monthOffset -= 1;
+      const now = new Date();
+      if (this.monthOffset !== 0) {
+        const month = now.getMonth() + this.monthOffset;
+        now.setMonth(month);
+      }
+      ScheduleService.getDates(this.departmentInfo.id, this.masterInfo.id, moment(now).format('YYYY-MM-DD'));
     },
     resetHoverDay () {
       this.hoverDateInfo = null;
@@ -263,6 +282,8 @@ export default {
           .catch((error) => {
             console.log(error);
           });
+      } else {
+        this.$store.dispatch('showAlert', 'Заполните данные клиента и выберите время');
       }
     }
     ,
@@ -275,11 +296,17 @@ export default {
       }
     },
     $route(to) {
-      ScheduleService.getDates(to.params.departmentId, to.params.masterId);
-      this.initDateFromRoute();
+      ScheduleService.getDates(to.params.departmentId, to.params.masterId, to.params.date);
+      this.dateFromRoute = true;
     },
   },
   mounted() {
+    this.$store.subscribe((mutation) => {
+      if (mutation.type === 'schedule/SET_DATES') {
+        this.initDateFromRoute();
+      }
+    });
+
     console.log('mounted');
     this.initDateFromRoute();
   },

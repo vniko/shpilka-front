@@ -154,10 +154,10 @@ export default {
             title: 'Продажа завершена',
             message: 'Что делаем дальше?',
             type: 'success',
-            customCloseBtnText: 'Ой, отменяем (',
+            customCloseBtnText: 'Отменить продажу',
             customCloseBtnClass: 'btn btn-danger',
             useConfirmBtn: true,
-            customConfirmBtnText: 'Новый заказ',
+            customConfirmBtnText: 'Ok',
             customConfirmBtnClass: 'btn btn-success',
             onConfirm: () => {
               this.makeNewOrder();
@@ -171,7 +171,7 @@ export default {
           console.log(error);
         });
       } else {
-        this.$store.dispatch('showAlert', 'Заполните данные клиента');
+        ``
       }
     },
   },

@@ -1,4 +1,5 @@
-<section class="c-booking">
+<v-layout>
+  <section class="c-booking" slot="content">
   <div class="container-fluid">
   <div class="row">
     <div class="col-md"  @click="hideDatePicker()">
@@ -11,16 +12,22 @@
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
+              <th width="50">Мест</th>
               <th>Клиент</th>
-              <th>Дети</th>
+              <th width="100">Взрослых</th>
+              <th width="150">Дети до 7 лет</th>
+              <th width="200">Дети старше 7 лет</th>
               <th>Комментарий</th>
               <th colspan="2">Действия</th>
             </tr>
           </thead>
           <tbody>
           <tr v-for="row in timeRows">
-            <td>{{ row.client.name }}</td>
-            <td>{{ row.kids }}</td>
+            <td align="center"><h2 class="badge badge-info" style="font-size: x-large">{{row.adults + row.kidsAfter7}}</h2></td>
+            <th>{{ row.client.name }}</th>
+            <td align="center"><span class="badge badge-warning"  style="font-size: large">{{row.adults}}</span></td>
+            <td align="center">{{ row.kids }}</td>
+            <td align="center"><span class="badge" :class="{'badge-warning':row.kidsAfter7>0}"  style="font-size: large">{{ row.kidsAfter7 }}</span></td>
             <td>{{ row.comment }}</td>
             <td style="width: 120px;">
               <click-confirm :messages="{ title: 'Точно удалить?', yes: 'ДА', no: 'Ой, нет' }">
@@ -46,3 +53,4 @@
     </select>
   </b-modal>
 </section>
+</v-layout>

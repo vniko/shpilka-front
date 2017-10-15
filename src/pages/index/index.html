@@ -1,8 +1,19 @@
 <div class="container d-flex h-100">
 <div class="row align-self-center" >
 
+  <div class="col-12 col-md-4" v-if="user">
+    <div class="card"  style="height: 250px;">
+      <div class="card-block text-center text-success">
+        <i class="fa fa-3x fa-user"></i>
+        <h4 class="card-title">{{user.name}}</h4>
+        <p class="card-text">Этот пользователь сейчас в системе</p>
+        <router-link to="/logout"  class="btn btn-danger"><i class="fa fa-sign-out"></i> Завершить сеанс</router-link>
+      </div><!-- / card-block -->
+    </div><!-- / card -->
+  </div><!-- / column -->
+
   <div class="col-12 col-md-4">
-    <div class="card">
+    <div class="card"   style="height: 250px;">
       <div class="card-block text-center text-success">
         <i class="fa fa-3x fa-calendar"></i>
         <h4 class="card-title">Запись</h4>
@@ -13,7 +24,7 @@
   </div><!-- / column -->
 
   <div class="col-12 col-md-4">
-    <div class="card">
+    <div class="card"   style="height: 250px;">
       <div class="card-block text-center text-primary">
         <i class="fa fa-3x fa-usd"></i>
         <h4 class="card-title">Продажа</h4>
@@ -23,13 +34,13 @@
     </div><!-- / card -->
   </div><!-- / column -->
 
-  <div class="col-12 col-md-4">
+  <div class="col-12 col-md-4" v-if="user && user.is_admin">
     <div class="card">
       <div class="card-block text-center text-warning">
         <i class="fa fa-3x fa-users"></i>
-        <h4 class="card-title">Учет посещений</h4>
-        <p class="card-text">Учет посещений. Контроль абонементов.</p>
-        <a href="#" class="btn btn-warning"><i class="fa fa-sign-in"></i> Перейти</a>
+        <h4 class="card-title">Учет рабочего времени</h4>
+        <p class="card-text">Контроль рабочего времени администраторов.</p>
+        <router-link to="/worklog" class="btn btn-warning"><i class="fa fa-sign-in"></i> Перейти</router-link>
       </div><!-- / card-block -->
     </div><!-- / card -->
   </div><!-- / column -->

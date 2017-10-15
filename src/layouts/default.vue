@@ -3,7 +3,12 @@
   <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
     <div class="container full-width">
       <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto mr-0">
+        <ul class="navbar-nav" v-if="user">
+          <li class="nav-item"  >
+            <a style="color:white">Пользователь: {{ user.name }} </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto mr-0" v-if="user">
           <li class="nav-item"  :class="{active: $route.name=='schedule'}">
             <a class="nav-link badge"  :class="{'badge-primary': $route.name=='schedule'}"  href="#schedule/1">Запись</a>
           </li>
@@ -14,7 +19,7 @@
             <a class="nav-link badge"  :class="{'badge-primary': $route.name=='pos-history'}"  href="#pos-history">История продаж</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link badge" href="#x">Учет посещений</a>
+            <a class="nav-link badge badge-danger"  href="#logout"><i class="fa fa-sign-out"></i> Завершить работу</a>
           </li>
 
         </ul>
@@ -35,6 +40,11 @@ export default {
   name: 'Layout',
   data() {
     return {};
+  },
+  computed: {
+    user() {
+      return this.$store.state.auth.user;
+    },
   },
   components: {
     Simplert,

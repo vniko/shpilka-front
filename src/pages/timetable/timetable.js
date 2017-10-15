@@ -8,6 +8,7 @@ import ScheduleService from '@/services/schedule';
 import moment from 'moment';
 import Datepicker from 'vuejs-datepicker';
 import ClickConfirm from 'click-confirm';
+import VLayout from '@/layouts/default.vue';
 
 
 moment.updateLocale('ru', {
@@ -30,6 +31,7 @@ export default {
   components: {
     ClickConfirm,
     Datepicker,
+    VLayout,
   },
   computed: {
     departmentInfo() {

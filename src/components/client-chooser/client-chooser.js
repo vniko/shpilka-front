@@ -28,9 +28,7 @@ export default {
   methods: {
     formIsValid() {
       return this.isCorrect('name')
-        && this.isCorrect('phone')
-        && this.isCorrect('dob')
-        && this.isCorrect('email');
+        && this.isCorrect('phone') ;
     },
     hasError(index) {
       if (this.clientInfo.hasOwnProperty(index) && this.clientInfo[index] !== null) {
@@ -74,7 +72,7 @@ export default {
       return false;
     },
     initCustomer(customer) {
-      this.clientInfo = { ...customer, kids: '0', visitComment: null };
+      this.clientInfo = { ...customer, kids: '0', adults: '1', kidsAfter7: '0', visitComment: null };
       this.clientType = 'new';
       this.clientInfo.phoneRaw = this.clientInfo.phone;
       this.$emit('input', this.clientInfo);
@@ -94,34 +92,34 @@ export default {
             return true;
           }
           break;
-        case 'email':
-          if (this.wasInput('email')) {
-            if (this.clientInfo.email === '' || this.clientInfo.email === null) {
-              return true;
-            }
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(this.clientInfo.email);
-          } else {
-            return true;
-          }
-          break;
-
-        case 'dob':
-          if (this.wasInput('dob')) {
-            if (this.clientInfo.dob === '' || this.clientInfo.dob === null) {
-              return true;
-            }
-            const date = moment(this.clientInfo.dob, 'DD.MM.YYYY');
-            if (date.isValid()) {
-              return true;
-            } else {
-              return false;
-            }
-          } else {
-            return true;
-          }
-          break;
-      }
+      //   case 'email':
+      //     if (this.wasInput('email')) {
+      //       if (this.clientInfo.email === '' || this.clientInfo.email === null) {
+      //         return true;
+      //       }
+      //       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      //       return re.test(this.clientInfo.email);
+      //     } else {
+      //       return true;
+      //     }
+      //     break;
+      //
+      //   case 'dob':
+      //     if (this.wasInput('dob')) {
+      //       if (this.clientInfo.dob === '' || this.clientInfo.dob === null) {
+      //         return true;
+      //       }
+      //       const date = moment(this.clientInfo.dob, 'DD.MM.YYYY');
+      //       if (date.isValid()) {
+      //         return true;
+      //       } else {
+      //         return false;
+      //       }
+      //     } else {
+      //       return true;
+      //     }
+      //     break;
+       }
       return false;
     },
     resetUser() {

@@ -2,22 +2,363 @@ body {
   font-family: "Roboto", sans-serif;
   min-height: 100vh;
   min-width: 300PX;
+  height: 100%;
 }
 
 html {
   font-size: 67.5%;
+  height: 100%;
 }
 
+body > :first-child {
+  height: 100%;
+}
 .c-booking {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   min-height: 100vh;
   line-height: 1;
+  /* /.b-applicant */
+  /* /.b-booking */
+  /* /.b-confirmation */
+  /* /.b-contact_us */
+  /* /.b-email_confirm */
+  /* /.b-reschedule */
+  /* /.b-resolve */
+  /* /.b-submit */
 }
 
 .c-booking address,
 .c-booking p {
   margin: 0;
+}
+
+.c-booking .b-applicant {
+  background: #f7f7f7;
+  min-height: 100vh;
+  padding: 0 2.22rem;
+}
+
+.c-booking .b-applicant .b-applicant_data {
+  margin: 0 0 4.63rem;
+}
+
+.c-booking .b-applicant .b-applicant_data.co_applicant {
+  display: none;
+}
+
+.c-booking .b-applicant .b-applicant_data .form-control {
+  background-color: #fff;
+  border-color: #e1e4e5;
+  color: #333232;
+  font-size: 2rem;
+  font-weight: 300;
+  height: 5.25rem;
+  padding-bottom: 0;
+  padding-left: 1.75rem;
+  padding-top: 2rem;
+}
+
+
+.c-booking .b-applicant .b-applicant_data .icon-calendar {
+  height: 2.75rem;
+  display: block;
+  margin: 0 auto;
+  width: 2.438rem;
+}
+
+.c-booking .b-applicant .b-applicant_data .icon-card {
+  height: 2.625rem;
+  display: block;
+  margin: 0 auto;
+  width: 3.688rem;
+}
+
+.c-booking .b-applicant .b-applicant_data .icon-letter {
+  height: 2.313rem;
+  display: block;
+  margin: 0 auto;
+  width: 3.563rem;
+}
+
+.c-booking .b-applicant .b-applicant_data .icon-phone {
+  height: 3.625rem;
+  display: block;
+  margin: 0 auto;
+  width: 2.813rem;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group {
+  margin: 0 0 1rem;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group label {
+  font-size: 2rem;
+  font-weight: 300;
+  left: 7rem;
+  margin: 0;
+  position: absolute;
+  top: calc(50% - 1rem);
+  z-index: 4;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group label .error_text {
+  color: #f00;
+  display: none;
+  margin: 0 0 0 1rem;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group.has-error label {
+  color: rgba(51, 50, 50, 0.57);
+  font-size: 1.125rem;
+  top: .875rem;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group.has-error label .error_text {
+  display: inline-block;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group input:focus + label,
+.c-booking .b-applicant .b-applicant_data .input-group input:valid + label {
+  color: rgba(51, 50, 50, 0.57);
+  font-size: 1.125rem;
+  top: .875rem;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group .form-control {
+  border-radius: 0 5px 5px 0;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group.has-error .form-control {
+  background-color: #fde9e9;
+  color: #f00;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group .icon-v {
+  display: none;
+  height: 2.188rem;
+  position: absolute;
+  right: 2rem;
+  top: calc(50% - 1.063rem);
+  width: 2.625rem;
+  z-index: 4;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group .icon-v path,
+.c-booking .b-applicant .b-applicant_data .input-group .icon-v stroke {
+  fill: #5a87c6;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group.is-correct .icon-v {
+  display: block;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group .icon-x {
+  display: none;
+  position: absolute;
+  right: 2rem;
+  top: calc(50% - 16px);
+  z-index: 4;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group.has-error .icon-x {
+  display: block;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group-addon {
+  background-color: #e1e4e5;
+  border-color: #e1e4e5;
+  text-align: center;
+  width: 5.25rem;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group-addon path,
+.c-booking .b-applicant .b-applicant_data .input-group-addon rect {
+  fill: #fff;
+}
+
+.c-booking .b-applicant .b-applicant_data .input-group-addon .spt {
+  display: block;
+  margin: 0 auto;
+}
+
+.c-booking .b-applicant .b-applicant_data .chapter {
+  color: #5a87c6;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.c-booking .b-applicant .b-applicant_data .chapter + .b-line_hr {
+  margin-bottom: 3.25rem;
+}
+
+.c-booking .b-applicant .b-chapter {
+  font-size: 2.5rem;
+  padding: 1.88rem 3.13rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c-booking .b-applicant .b-chapter .btn-back {
+  left: 0;
+  top: 1.88rem;
+}
+
+.c-booking .b-applicant .b-line_hr {
+  background-color: #cbd6e0;
+  border: 0;
+  height: 2px;
+  margin: 0 -2.22rem 2.5rem;
+}
+
+.c-booking .b-applicant .b-logo {
+  color: #5a87c6;
+  font-size: 2rem;
+  margin: 0 0 2rem;
+  text-align: center;
+  text-transform: none;
+}
+
+.c-booking .b-applicant .b-logo .logo {
+  display: inline-block;
+  height: 3.394rem;
+  position: relative;
+  width: 15.815rem;
+}
+
+.c-booking .b-applicant .b-logo .logo circle,
+.c-booking .b-applicant .b-logo .logo path {
+  fill: #5a87c6;
+}
+
+.c-booking .b-applicant .b-logo .logo .text {
+  bottom: -1.525rem;
+  font-weight: 100;
+  left: 0;
+  position: absolute;
+}
+
+.c-booking .b-applicant .b-options {
+  margin: 0 0 4.63rem;
+}
+
+.c-booking .b-applicant .b-options .form-control {
+  background-color: #fff;
+  border-color: #e1e4e5;
+  color: #333232;
+  font-size: 1.85rem;
+  height: 9.13rem;
+  padding: 0;
+  text-align: left;
+}
+
+.c-booking .b-applicant .b-options button.form-control {
+  cursor: pointer;
+}
+
+.c-booking .b-applicant .b-options .icon-q {
+  display: block;
+  margin: 0 auto;
+}
+
+.c-booking .b-applicant .b-options .icon-v {
+  display: none;
+  margin: 0 auto;
+}
+
+.c-booking .b-applicant .b-options .input-group {
+  margin: 0 0 1rem;
+}
+
+.c-booking .b-applicant .b-options .input-group .form-control {
+  border-radius: 0 5px 5px 0;
+  padding: 0 0 0 3.75rem;
+}
+
+.c-booking .b-applicant .b-options .input-group.is-selected .form-control {
+  background-color: #5a87c6;
+  border-color: #5a87c6;
+  color: #fff;
+}
+
+.c-booking .b-applicant .b-options .input-group.is-selected .icon-q {
+  display: none;
+}
+
+.c-booking .b-applicant .b-options .input-group.is-selected .icon-v {
+  display: block;
+}
+
+.c-booking .b-applicant .b-options .input-group.is-selected .input-group-addon {
+  background-color: #5a87c6;
+  border-color: #5a87c6;
+  color: #fff;
+}
+
+.c-booking .b-applicant .b-options .input-group-addon {
+  background-color: #e1e4e5;
+  border-color: #e1e4e5;
+  text-align: center;
+  width: 110PX;
+}
+
+.c-booking .b-applicant .b-options .input-group-addon path,
+.c-booking .b-applicant .b-options .input-group-addon rect {
+  fill: #fff;
+}
+
+.c-booking .b-applicant .b-text {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.3;
+  margin: 0 0 2.75rem;
+  text-align: center;
+}
+
+.c-booking .b-applicant .b-text.with_bg {
+  background-color: #5a87c6;
+  color: #fff;
+  margin: -2.5rem -2.22rem 3.25rem;
+  padding: 3.38rem 2.22rem 6.25rem;
+  text-align: left;
+}
+
+.c-booking .b-applicant .btn-default {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+.c-booking .b-applicant .btn-default::after,
+.c-booking .b-applicant .btn-default::before {
+  background: #f19b2b;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 2.22rem;
+}
+
+.c-booking .b-applicant .btn-default::after {
+  right: -2.22rem;
+}
+
+.c-booking .b-applicant .btn-default::before {
+  left: -2.22rem;
+}
+
+.c-booking .b-applicant .btn-next_step {
+  display: none;
+}
+
+.c-booking .b-applicant.is-correct .btn-next_step {
+  display: block;
+}
+
+.c-booking .b-applicant.has-co_applicant .b-applicant_data.co_applicant {
+  display: block;
 }
 
 .c-booking .b-booking {
@@ -74,7 +415,7 @@ html {
 
 .c-booking .b-booking .b-time_selector .l-times .time {
   background: #fff;
-  border: 5PX solid #5d86c4;
+  border: 5PX solid #fff;
   color: #385d92;
   cursor: pointer;
   float: left;
@@ -99,7 +440,11 @@ html {
   margin: 0 0 1rem;
 }
 
-.c-booking .b-booking .b-user_data address {
+.b-user_data {
+  padding-bottom: 40px;
+}
+
+.b-user_data address {
   color: #333232;
   display: block;
   font-size: 1.65rem;
@@ -110,7 +455,7 @@ html {
   text-align: center;
 }
 
-.c-booking .b-booking .b-user_data .appointment {
+.b-user_data .appointment {
   color: #5a87c6;
   font-size: 1.5rem;
   font-weight: 300;
@@ -119,46 +464,46 @@ html {
   text-align: center;
 }
 
-.c-booking .b-booking .b-user_data .b-line_hr {
+.b-user_data .b-line_hr {
   background-color: #5a87c6;
   border: 0;
   height: 1px;
   margin: 0 -1rem 2.9rem;
 }
 
-.c-booking .b-booking .b-user_data .b-logo {
+.b-user_data .b-logo {
   color: #5a87c6;
   font-size: 2rem;
   margin: 0 0 1.325rem;
   text-align: center;
 }
 
-.c-booking .b-booking .b-user_data .b-logo .logo {
+.b-user_data .b-logo .logo {
   display: inline-block;
   height: 3.394rem;
   position: relative;
   width: 15.815rem;
 }
 
-.c-booking .b-booking .b-user_data .b-logo .logo circle,
-.c-booking .b-booking .b-user_data .b-logo .logo path {
+.b-user_data .b-logo .logo circle,
+.b-user_data .b-logo .logo path {
   fill: #5a87c6;
 }
 
-.c-booking .b-booking .b-user_data .b-logo .logo .text {
+.b-user_data .b-logo .logo .text {
   bottom: -1.525rem;
   font-weight: 100;
   left: 0;
   position: absolute;
 }
 
-.c-booking .b-booking .b-user_data .btn-submit {
+.b-user_data .btn-submit {
   display: none;
   margin: 2rem 0 0;
 }
 
-.c-booking .b-booking .b-user_data .btn-submit::after,
-.c-booking .b-booking .b-user_data .btn-submit::before {
+.b-user_data .btn-submit::after,
+.b-user_data .btn-submit::before {
   background: #f19b2b;
   content: "";
   height: 100%;
@@ -167,19 +512,19 @@ html {
   width: 1rem;
 }
 
-.c-booking .b-booking .b-user_data .btn-submit::after {
+.b-user_data .btn-submit::after {
   right: -1rem;
 }
 
-.c-booking .b-booking .b-user_data .btn-submit::before {
+.b-user_data .btn-submit::before {
   left: -1rem;
 }
 
-.c-booking .b-booking .b-user_data.is-correct .btn-submit {
+.b-user_data.is-correct .btn-submit {
   display: block;
 }
 
-.c-booking .b-booking .b-user_data .form-control {
+.b-user_data .form-control {
   background-color: #fff;
   border-color: #e1e4e5;
   color: #333232;
@@ -191,39 +536,52 @@ html {
   padding-top: 2rem;
 }
 
-.c-booking .b-booking .b-user_data .icon-calendar {
+.b-user_data .form-control-input {
+  background-color: #fff;
+  border-color: #e1e4e5;
+  color: #333232;
+  font-size: 2rem;
+  font-weight: 300;
+  height: 5.25rem;
+  padding-bottom: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+
+.b-user_data .icon-calendar {
   height: 2.75rem;
   display: block;
   margin: 0 auto;
   width: 2.438rem;
 }
 
-.c-booking .b-booking .b-user_data .icon-card {
+.b-user_data .icon-card {
   height: 2.625rem;
   display: block;
   margin: 0 auto;
   width: 3.688rem;
 }
 
-.c-booking .b-booking .b-user_data .icon-letter {
+.b-user_data .icon-letter {
   height: 2.313rem;
   display: block;
   margin: 0 auto;
   width: 3.563rem;
 }
 
-.c-booking .b-booking .b-user_data .icon-phone {
+.b-user_data .icon-phone {
   height: 3.625rem;
   display: block;
   margin: 0 auto;
   width: 2.813rem;
 }
 
-.c-booking .b-booking .b-user_data .input-group {
+.b-user_data .input-group {
   margin: 0 0 1rem;
 }
 
-.c-booking .b-booking .b-user_data .input-group label {
+.b-user_data .input-group label {
   font-size: 2rem;
   font-weight: 300;
   left: 7rem;
@@ -233,39 +591,44 @@ html {
   z-index: 4;
 }
 
-.c-booking .b-booking .b-user_data .input-group label .error_text {
+.b-user_data .input-group label .error_text {
   color: #f00;
   display: none;
   margin: 0 0 0 1rem;
 }
 
-.c-booking .b-booking .b-user_data .input-group.has-error label {
+.b-user_data .input-group.has-error label {
   color: rgba(51, 50, 50, 0.57);
   font-size: 1.125rem;
   top: .875rem;
 }
 
-.c-booking .b-booking .b-user_data .input-group.has-error label .error_text {
+.b-user_data .input-group.has-error label .error_text {
   display: inline-block;
 }
 
-.c-booking .b-booking .b-user_data .input-group input:focus + label,
-.c-booking .b-booking .b-user_data .input-group input:valid + label {
+.b-user_data .input-group input:focus + label,
+.b-user_data .input-group input:valid + label {
   color: rgba(51, 50, 50, 0.57);
   font-size: 1.125rem;
   top: .875rem;
 }
 
-.c-booking .b-booking .b-user_data .input-group .form-control {
+.b-user_data .input-group .form-control {
   border-radius: 0 5px 5px 0;
 }
 
-.c-booking .b-booking .b-user_data .input-group.has-error .form-control {
+.b-user_data .input-group .form-control-input {
+  border-radius: 0 5px 5px 0;
+}
+
+
+.b-user_data .input-group.has-error .form-control {
   background-color: #fde9e9;
   color: #f00;
 }
 
-.c-booking .b-booking .b-user_data .input-group .icon-v {
+.b-user_data .input-group .icon-v {
   display: none;
   height: 2.188rem;
   position: absolute;
@@ -275,16 +638,16 @@ html {
   z-index: 4;
 }
 
-.c-booking .b-booking .b-user_data .input-group .icon-v path,
-.c-booking .b-booking .b-user_data .input-group .icon-v stroke {
+.b-user_data .input-group .icon-v path,
+.b-user_data .input-group .icon-v stroke {
   fill: #5a87c6;
 }
 
-.c-booking .b-booking .b-user_data .input-group.is-correct .icon-v {
+.b-user_data .input-group.is-correct .icon-v {
   display: block;
 }
 
-.c-booking .b-booking .b-user_data .input-group .icon-x {
+.b-user_data .input-group .icon-x {
   display: none;
   position: absolute;
   right: 2rem;
@@ -292,58 +655,29 @@ html {
   z-index: 4;
 }
 
-.c-booking .b-booking .b-user_data .input-group.has-error .icon-x {
+.b-user_data .input-group.has-error .icon-x {
   display: block;
 }
 
-.c-booking .b-booking .b-user_data .input-group-addon {
+.b-user_data .input-group-addon {
   background-color: #e1e4e5;
   border-color: #e1e4e5;
   text-align: center;
   width: 5.25rem;
 }
 
-.c-booking .b-booking .b-user_data .input-group-addon path,
-.c-booking .b-booking .b-user_data .input-group-addon rect {
+.b-user_data .input-group-addon path,
+.b-user_data .input-group-addon rect {
   fill: #fff;
 }
 
-.c-booking .b-booking .b-user_data .input-group-addon .spt {
+.b-user_data .input-group-addon .spt {
   display: block;
   margin: 0 auto;
 }
 
-.c-booking .b-booking .btn-default {
-  background: #f19b2b;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  height: 5rem;
-  font: inherit;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 5rem;
-  padding: 0 1rem 0 72PX;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
-  width: 100%;
-}
-
-.c-booking .b-booking .btn-default .icon-logo {
-  height: 3.188rem;
-  left: 15PX;
-  position: absolute;
-  top: calc(50% - 1.563rem);
-  width: 3.625rem;
-}
-
-.c-booking .b-booking .btn-default .icon-logo path {
-  fill: #fff;
-}
-
 .c-booking.has-time_selector .b-booking {
-  background-color: #5d86c4;
+  background-color: white;
   color: #fff;
   padding: 1rem 1rem 0 1rem;
 }
@@ -352,6 +686,15 @@ html {
   background-color: #fafafa;
   color: #333232;
   padding: 0;
+}
+
+.c-booking .btn-back {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  left: 1rem;
+  position: absolute;
+  top: 1rem;
 }
 
 .c-booking .b-calendar {
@@ -499,7 +842,7 @@ html {
 }
 
 .c-booking .b-confirmation .b-details {
-  background-color: #5d86c4;
+  background-color: white;
   color: #fff;
   margin: 0 -2.222rem;
   padding: 4.074rem 2.222rem 2.222rem;
@@ -542,7 +885,7 @@ html {
 
 .c-booking .b-confirmation .b-information .chapter .icon-stand {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 3.704rem;
   /* max-width: 424PX; */
 }
 
@@ -556,7 +899,6 @@ html {
 
 .c-booking .b-confirmation .b-information .chapter .title {
   color: #5d86c4;
-  margin: -7.407rem 0 0;
 }
 
 .c-booking .b-confirmation .b-information .l-info {
@@ -730,6 +1072,588 @@ html {
   fill: #fff;
 }
 
+.c-booking .b-contact_us {
+  background: #f7f7f7;
+  min-height: 100vh;
+  padding: 0 2.22rem;
+}
+
+.c-booking .b-contact_us a {
+  color: #5a87c6;
+}
+
+.c-booking .b-contact_us .b-chapter {
+  font-size: 2.5rem;
+  padding: 1.88rem 3.13rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c-booking .b-contact_us .b-chapter .btn-back {
+  left: 0;
+  top: 1.88rem;
+}
+
+.c-booking .b-contact_us .b-icon_phone {
+  height: 24.63rem;
+  margin: 0 auto 3.75rem;
+  width: 19rem;
+}
+
+.c-booking .b-contact_us .b-icon_phone path {
+  fill: #5a87c6;
+}
+
+.c-booking .b-contact_us .b-line_hr {
+  background-color: #cbd6e0;
+  border: 0;
+  height: 2px;
+  margin: 0 -2.22rem 2.5rem;
+}
+
+.c-booking .b-contact_us .b-logo {
+  display: block;
+  height: 4.38rem;
+  margin: 0 auto 1rem;
+  width: 20.38rem;
+}
+
+.c-booking .b-contact_us .b-logo circle,
+.c-booking .b-contact_us .b-logo path {
+  fill: #5a87c6;
+}
+
+.c-booking .b-contact_us .b-phone {
+  color: #5a87c6;
+  font-size: 4.5rem;
+  margin: 0 0 9rem;
+  text-align: center;
+}
+
+.c-booking .b-contact_us .b-text {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.3;
+  margin: 0 0 5rem;
+  text-align: center;
+}
+
+.c-booking .b-contact_us .b-text .text-large {
+  font-size: 4.25rem;
+}
+
+.c-booking .b-contact_us .btn-default {
+  display: block;
+  margin: 3.5rem auto 0;
+  position: relative;
+}
+
+.c-booking .b-contact_us .btn-default::after,
+.c-booking .b-contact_us .btn-default::before {
+  background: #f19b2b;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 2.22rem;
+}
+
+.c-booking .b-contact_us .btn-default::after {
+  right: -2.22rem;
+}
+
+.c-booking .b-contact_us .btn-default::before {
+  left: -2.22rem;
+}
+
+.c-booking .b-email_confirm {
+  background: #f7f7f7;
+  min-height: 100vh;
+  padding: 0 2.22rem;
+}
+
+.c-booking .b-email_confirm a {
+  color: #5a87c6;
+}
+
+.c-booking .b-email_confirm .b-chapter {
+  font-size: 2.5rem;
+  padding: 1.88rem 3.13rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c-booking .b-email_confirm .b-chapter .btn-back {
+  left: 0;
+  top: 1.88rem;
+}
+
+.c-booking .b-email_confirm .b-icon_letter {
+  height: 12rem;
+  margin: 0 auto 3.75rem;
+  width: 19.5rem;
+}
+
+.c-booking .b-email_confirm .b-icon_letter path {
+  fill: #5a87c6;
+}
+
+.c-booking .b-email_confirm .b-line_hr {
+  background-color: #cbd6e0;
+  border: 0;
+  height: 2px;
+  margin: 0 -2.22rem 2.5rem;
+}
+
+.c-booking .b-email_confirm .b-text {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.3;
+  margin: 0 0 10rem;
+  text-align: center;
+}
+
+.c-booking .b-email_confirm .b-text .text-large {
+  font-size: 4.25rem;
+}
+
+.c-booking .b-email_confirm .btn-default {
+  display: block;
+  margin: 3.5rem auto 0;
+  position: relative;
+}
+
+.c-booking .b-email_confirm .btn-default::after,
+.c-booking .b-email_confirm .btn-default::before {
+  background: #f19b2b;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 2.22rem;
+}
+
+.c-booking .b-email_confirm .btn-default::after {
+  right: -2.22rem;
+}
+
+.c-booking .b-email_confirm .btn-default::before {
+  left: -2.22rem;
+}
+
+.c-booking .b-reschedule {
+  background: #f7f7f7;
+  min-height: 100vh;
+  padding: 0 2.22rem;
+}
+
+.c-booking .b-reschedule a {
+  color: #5a87c6;
+}
+
+.c-booking .b-reschedule .b-chapter {
+  font-size: 2.5rem;
+  padding: 1.88rem 3.13rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c-booking .b-reschedule .b-chapter .btn-back {
+  left: 0;
+  top: 1.88rem;
+}
+
+.c-booking .b-reschedule .b-icon_calendar {
+  height: 26rem;
+  margin: 0 auto 3.75rem;
+  width: 22.63rem;
+}
+
+.c-booking .b-reschedule .b-icon_calendar path {
+  fill: #5a87c6;
+}
+
+.c-booking .b-reschedule .b-line_hr {
+  background-color: #cbd6e0;
+  border: 0;
+  height: 2px;
+  margin: 0 -2.22rem 4.5rem;
+}
+
+.c-booking .b-reschedule .b-text {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.3;
+  margin: 0 0 5rem;
+  text-align: center;
+}
+
+.c-booking .b-reschedule .b-text .text-large {
+  font-size: 4.25rem;
+}
+
+.c-booking .b-reschedule .btn-default {
+  display: block;
+  margin: 3.5rem auto 0;
+  position: relative;
+}
+
+.c-booking .b-reschedule .btn-default::after,
+.c-booking .b-reschedule .btn-default::before {
+  background: #f19b2b;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 2.22rem;
+}
+
+.c-booking .b-reschedule .btn-default::after {
+  right: -2.22rem;
+}
+
+.c-booking .b-reschedule .btn-default::before {
+  left: -2.22rem;
+}
+
+.c-booking .b-resolve {
+  background: #f7f7f7;
+  min-height: 100vh;
+  padding: 0 2.22rem;
+}
+
+.c-booking .b-resolve .b-chapter {
+  font-size: 2.5rem;
+  padding: 1.88rem 3.13rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c-booking .b-resolve .b-chapter .btn-back {
+  left: 0;
+  top: 1.88rem;
+}
+
+.c-booking .b-resolve .b-line_hr {
+  background-color: #cbd6e0;
+  border: 0;
+  height: 2px;
+  margin: 0 -2.22rem 2.5rem;
+}
+
+.c-booking .b-resolve .b-options .form-control {
+  background-color: #fff;
+  border-color: #e1e4e5;
+  color: #333232;
+  font-size: 1.85rem;
+  height: 9.13rem;
+  padding: 0;
+  text-align: left;
+}
+
+.c-booking .b-resolve .b-options button.form-control {
+  cursor: pointer;
+}
+
+.c-booking .b-resolve .b-options .icon-q {
+  display: block;
+  margin: 0 auto;
+}
+
+.c-booking .b-resolve .b-options .icon-v {
+  display: none;
+  margin: 0 auto;
+}
+
+.c-booking .b-resolve .b-options .input-group {
+  margin: 0 0 1rem;
+}
+
+.c-booking .b-resolve .b-options .input-group .form-control {
+  border-radius: 0 5px 5px 0;
+  padding: 0 0 0 3.75rem;
+}
+
+.c-booking .b-resolve .b-options .input-group.is-selected .form-control {
+  background-color: #5a87c6;
+  border-color: #5a87c6;
+  color: #fff;
+}
+
+.c-booking .b-resolve .b-options .input-group.is-selected .icon-q {
+  display: none;
+}
+
+.c-booking .b-resolve .b-options .input-group.is-selected .icon-v {
+  display: block;
+}
+
+.c-booking .b-resolve .b-options .input-group.is-selected .input-group-addon {
+  background-color: #5a87c6;
+  border-color: #5a87c6;
+  color: #fff;
+}
+
+.c-booking .b-resolve .b-options .input-group-addon {
+  background-color: #e1e4e5;
+  border-color: #e1e4e5;
+  text-align: center;
+  width: 110PX;
+}
+
+.c-booking .b-resolve .b-options .input-group-addon path,
+.c-booking .b-resolve .b-options .input-group-addon rect {
+  fill: #fff;
+}
+
+.c-booking .b-resolve .b-text {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.3;
+  margin: 0 0 2.75rem;
+  text-align: center;
+}
+
+.c-booking .b-resolve .btn-next_step {
+  margin: 3.5rem auto 0;
+  display: none;
+  position: relative;
+}
+
+.c-booking .b-resolve .btn-next_step::after,
+.c-booking .b-resolve .btn-next_step::before {
+  background: #f19b2b;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 2.22rem;
+}
+
+.c-booking .b-resolve .btn-next_step::after {
+  right: -2.22rem;
+}
+
+.c-booking .b-resolve .btn-next_step::before {
+  left: -2.22rem;
+}
+
+.c-booking .b-resolve.is-resolved .btn-next_step {
+  display: block;
+}
+
+.c-booking .b-submit {
+  background: #f7f7f7;
+  min-height: 100vh;
+  padding: 0 2.22rem;
+}
+
+.c-booking .b-submit .b-chapter {
+  font-size: 2.5rem;
+  padding: 1.88rem 3.13rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c-booking .b-submit .b-chapter .btn-back {
+  left: 0;
+  top: 1.88rem;
+}
+
+.c-booking .b-submit .b-credited {
+  color: #5a87c6;
+  font-size: 2.3rem;
+  line-height: 1.2;
+  margin: 0 0 6rem;
+  text-align: center;
+}
+
+.c-booking .b-submit .b-credited .summ {
+  font-size: 4.5rem;
+}
+
+.c-booking .b-submit .b-line_hr {
+  background-color: #cbd6e0;
+  border: 0;
+  height: 2px;
+  margin: 0 -2.22rem 2.5rem;
+}
+
+.c-booking .b-submit .b-logo {
+  color: #5a87c6;
+  font-size: 2rem;
+  margin: 0 0 2rem;
+  text-align: center;
+  text-transform: none;
+}
+
+.c-booking .b-submit .b-logo .logo {
+  display: inline-block;
+  height: 3.394rem;
+  position: relative;
+  width: 15.815rem;
+}
+
+.c-booking .b-submit .b-logo .logo circle,
+.c-booking .b-submit .b-logo .logo path {
+  fill: #5a87c6;
+}
+
+.c-booking .b-submit .b-logo .logo .text {
+  bottom: -1.525rem;
+  font-weight: 100;
+  left: 0;
+  position: absolute;
+}
+
+.c-booking .b-submit .b-options {
+  padding: 0 0 4rem;
+}
+
+.c-booking .b-submit .b-options .form-control {
+  background-color: #fff;
+  border-color: #e1e4e5;
+  color: #333232;
+  font-size: 1.85rem;
+  height: 9.13rem;
+  padding: 0;
+  text-align: left;
+}
+
+.c-booking .b-submit .b-options button.form-control {
+  cursor: pointer;
+}
+
+.c-booking .b-submit .b-options .icon-q {
+  display: block;
+  margin: 0 auto;
+}
+
+.c-booking .b-submit .b-options .icon-v {
+  display: none;
+  margin: 0 auto;
+}
+
+.c-booking .b-submit .b-options .input-group {
+  margin: 0 0 1rem;
+}
+
+.c-booking .b-submit .b-options .input-group .form-control {
+  border-radius: 0 5px 5px 0;
+  padding: 0 0 0 3.75rem;
+}
+
+.c-booking .b-submit .b-options .input-group.is-selected .form-control {
+  background-color: #5a87c6;
+  border-color: #5a87c6;
+  color: #fff;
+}
+
+.c-booking .b-submit .b-options .input-group.is-selected .icon-q {
+  display: none;
+}
+
+.c-booking .b-submit .b-options .input-group.is-selected .icon-v {
+  display: block;
+}
+
+.c-booking .b-submit .b-options .input-group.is-selected .input-group-addon {
+  background-color: #5a87c6;
+  border-color: #5a87c6;
+  color: #fff;
+}
+
+.c-booking .b-submit .b-options .input-group-addon {
+  background-color: #e1e4e5;
+  border-color: #e1e4e5;
+  text-align: center;
+  width: 110PX;
+}
+
+.c-booking .b-submit .b-options .input-group-addon path,
+.c-booking .b-submit .b-options .input-group-addon rect {
+  fill: #fff;
+}
+
+.c-booking .b-submit .b-text {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.3;
+  margin: 0 0 2.75rem;
+  text-align: center;
+}
+
+.c-booking .b-submit .b-text .emph {
+  color: #5a87c6;
+  font-size: 3.5rem;
+}
+
+.c-booking .b-submit .btn-default {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+.c-booking .b-submit .btn-default::after,
+.c-booking .b-submit .btn-default::before {
+  background: #f19b2b;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 2.22rem;
+}
+
+.c-booking .b-submit .btn-default::after {
+  right: -2.22rem;
+}
+
+.c-booking .b-submit .btn-default::before {
+  left: -2.22rem;
+}
+
+.c-booking .b-submit .btn-submit {
+  display: none;
+}
+
+.c-booking .b-submit.is-submitted .btn-submit {
+  display: block;
+}
+
+.c-booking .btn-default {
+  background: #f19b2b;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  height: 5rem;
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 5rem;
+  padding: 0 1rem 0 72PX;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.c-booking .btn-default .icon-logo {
+  height: 3.188rem;
+  left: 15PX;
+  position: absolute;
+  top: calc(50% - 1.563rem);
+  width: 3.625rem;
+}
+
+.c-booking .btn-default .icon-logo path {
+  fill: #fff;
+}
+
 .c-booking > .container-fluid {
   min-height: 100vh;
 }
@@ -807,41 +1731,59 @@ html {
     font-size: 100%;
   }
 
+  .c-booking .b-applicant .b-logo .logo {
+    height: 4.438rem;
+    width: 19.375rem;
+  }
+
+  .c-booking .b-applicant .b-logo .logo .text {
+    bottom: -.875rem;
+  }
+
   .c-booking .b-booking {
     padding: 3rem 3.75rem 1rem 3.75rem;
   }
 
-  .c-booking .b-booking .b-user_data address {
+  .b-user_data address {
     color: #9a9a9a;
     font-size: 1.5rem;
     margin: 0 0 1rem;
   }
 
-  .c-booking .b-booking .b-user_data .appointment {
+  .b-user_data .appointment {
     margin: 0 0 1.15rem;
   }
 
-  .c-booking .b-booking .b-user_data .b-line_hr {
+  .b-user_data .b-line_hr {
     background-color: #3274b3;
     margin: 0 0 1.5rem;
   }
 
-  .c-booking .b-booking .b-user_data .b-logo {
+  .b-user_data .b-logo {
     margin: 0 0 2.125rem;
   }
 
-  .c-booking .b-booking .b-user_data .b-logo .logo {
+  .b-user_data .b-logo .logo {
     height: 4.438rem;
     width: 19.375rem;
   }
 
-  .c-booking .b-booking .b-user_data .b-logo .logo .text {
+  .b-user_data .b-logo .logo .text {
     bottom: -.875rem;
   }
 
-  .c-booking .b-booking .b-user_data .btn-submit::after,
-  .c-booking .b-booking .b-user_data .btn-submit::before {
+  .b-user_data .btn-submit::after,
+  .b-user_data .btn-submit::before {
     display: none;
+  }
+
+  .c-booking .b-submit .b-logo .logo {
+    height: 4.438rem;
+    width: 19.375rem;
+  }
+
+  .c-booking .b-submit .b-logo .logo .text {
+    bottom: -.875rem;
   }
 }
 
@@ -866,17 +1808,12 @@ html {
     padding: 2.2rem 0 0;
   }
 
-  .c-booking .b-booking .b-user_data address {
+  .b-user_data address {
     margin: 0 0 2.75rem;
   }
 
-  .c-booking .b-booking .b-user_data .btn-submit {
+  .b-user_data .btn-submit {
     margin: 4.875rem 0 0;
-  }
-
-  .c-booking .b-booking .btn-default {
-    min-width: 30rem;
-    width: auto;
   }
 
   .c-booking.has-time_selector .b-booking {
@@ -928,6 +1865,11 @@ html {
   .c-booking.has-user_data .b-calendar_col {
     display: initial;
   }
+
+  .c-booking .btn-default {
+    min-width: 30rem;
+    width: auto;
+  }
 }
 
 @media (min-width: 992px) {
@@ -935,7 +1877,7 @@ html {
     font-size: 100%;
   }
 
-  .c-booking .b-booking .b-user_data .btn-submit {
+  .b-user_data .btn-submit {
     margin: 7.875rem 0 0;
   }
 }
@@ -980,8 +1922,8 @@ html {
     margin: 0 -1.5rem 3rem;
   }
 
-  .c-booking .b-confirmation .b-information .chapter .title {
-    margin: -5em 0 0;
+  .c-booking .b-confirmation .b-information .chapter .icon-stand {
+    margin: 0 auto 2.5rem;
   }
 
   .c-booking .b-confirmation .b-information .l-info {

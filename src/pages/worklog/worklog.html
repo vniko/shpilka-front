@@ -1,0 +1,78 @@
+<v-layout>
+  <section class="c-booking" slot="content">
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-md">
+
+      <h1>Учет рабочего времени</h1>
+      <form class="form-inline">
+        <div class="form-group">
+          <label>Дата &nbsp;&nbsp;&nbsp;</label>
+          <datepicker :bootstrapStyling="true" :monday-first="true" :inline="false"  v-model="form.work_date"  language="ru"></datepicker>
+        </div>
+        <div class="form-group  mx-sm-3" v-if="list.meta">
+          <label>Сотрудник &nbsp;&nbsp;&nbsp;</label>
+          <select class="form-control" v-model="form.user_id">
+            <option :value="null">Не выбран</option>
+            <option v-for="user in list.meta.users.data" :value="user.id">{{user.name}}</option>
+          </select>
+        </div>
+        <div class="form-group  mx-sm-3">
+          <label>Кол-во часов &nbsp;&nbsp;&nbsp;</label>
+          <input type="number"  class="form-control" v-model="form.hrs" min="1" max="12" step="1" >
+        </div>
+        <div class="form-group  mx-sm-3">
+          <button type="submit" class="btn btn-primary" @click="submit">Добавить запись</button>
+        </div>
+      </form>
+      <hr>
+      <h1>Список</h1>
+      <form class="form-inline">
+        <div class="form-group">
+          <label>C  &nbsp;&nbsp;&nbsp;</label>
+          <datepicker :bootstrapStyling="true" :monday-first="true" :inline="false"  v-model="filters.start_date"  language="ru"></datepicker>
+        </div>
+        <div class="form-group  mx-sm-3" v-if="list.meta">
+          <label>По  &nbsp;&nbsp;&nbsp;</label>
+          <datepicker :bootstrapStyling="true" :monday-first="true" :inline="false"  v-model="filters.end_date"  language="ru"></datepicker>
+
+        </div>
+        <div class="form-group  mx-sm-3" v-if="list.meta">
+          <label>Сотрудник &nbsp;&nbsp;&nbsp;</label>
+          <select class="form-control" v-model="filters.user_id">
+            <option :value="null">Все</option>
+            <option v-for="user in list.meta.users.data" :value="user.id">{{user.name}}</option>
+          </select>
+        </div>
+        <div class="form-group  mx-sm-3">
+          <button type="submit" class="btn btn-outline-black" @click="refresh">Применить фильтр</button>
+        </div>
+      </form>
+      <br><br>
+      <table class="table table-striped" v-if="list.data.length">
+        <thead>
+          <tr>
+            <th style="width: 150px;">Дата</th>
+            <th>Сотрудник</th>
+            <th>Кол-во часов</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(row, index) in list.data" :key="row.id">
+            <td>{{row.work_date}}</td>
+            <td>{{row.user.name}}</td>
+            <td>{{row.hrs}}</td>
+            <td><click-confirm :messages="{ title: 'Точно удалить?', yes: 'ДА', no: 'Ой, нет' }"  :key="'cc' + row.id">
+              <button class="btn btn-outline-danger" @click="deleteRow(index)"><i class="fa fa-trash-o"></i> Удалить</button>
+            </click-confirm>
+               </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  </div>
+</section>
+</v-layout>
