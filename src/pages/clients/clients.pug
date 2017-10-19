@@ -1,0 +1,28 @@
+v-layout
+  section(slot="content")
+    h4.sub-title.space-top.space-bottom Список клиентов
+
+    table.table.table-striped
+      thead
+        tr
+          th Имя
+          th Телефон
+          th(width="100") Взрослые
+          th(width="100") Дети до 7
+          th(width="100") Дети от 7
+          th(width="140")
+      tbody
+        tr(v-for="client in clients.data", :class="{'is-deleted': client.is_deleted}")
+          td {{ client.name }}
+          td {{ client.phone }}
+          td {{ client.adults }}
+          td {{ client.kids }}
+          td {{ client.kidsAfter7 }}
+          td
+            button.btn.btn-danger(@click="deleteClient(client)", v-if="!client.is_deleted")
+              i.fa.fa-trash-o
+            span &nbsp;
+            button.btn.btn-success(@click="editClient(client)", v-if="!client.is_deleted")
+              i.fa.fa-edit
+
+            span.badge.badge-warning(v-if="client.is_deleted") Удален

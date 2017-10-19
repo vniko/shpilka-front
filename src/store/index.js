@@ -16,6 +16,7 @@ import * as actions from './actions';
 import schedule from './modules/schedule';
 import pos from './modules/pos';
 import auth from './modules/auth';
+import clients from './modules/clients';
 
 Vue.use(Vuex);
 
@@ -44,6 +45,7 @@ export default new Vuex.Store({
     schedule,
     pos,
     auth,
+    clients,
   },
 
   /**

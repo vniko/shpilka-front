@@ -18,6 +18,12 @@
           <li class="nav-item" :class="{active: $route.name=='pos-history'}">
             <a class="nav-link badge"  :class="{'badge-primary': $route.name=='pos-history'}"  href="#pos-history">История продаж</a>
           </li>
+          <li class="nav-item" :class="{active: $route.name=='clients'}">
+            <a class="nav-link badge"  :class="{'badge-primary': $route.name=='clients'}"  href="#clients">Клиенты</a>
+          </li>
+          <li class="nav-item" :class="{active: $route.name=='worklog'}" >
+            <a class="nav-link badge"  :class="{'badge-primary': $route.name=='worklog'}"  href="#worklog">Учет рабочего времени</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link badge badge-danger"  href="#logout"><i class="fa fa-sign-out"></i> Завершить работу</a>
           </li>

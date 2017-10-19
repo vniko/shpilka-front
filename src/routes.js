@@ -6,6 +6,7 @@
  */
 import ScheduleService from '@/services/schedule';
 import PosService from '@/services/pos';
+import ClientsService from '@/services/clients';
 import AuthService from '@/services/auth';
 import moment from 'moment';
 /**
@@ -26,6 +27,20 @@ export default [
     },
     meta: {
       auth: true,
+    },
+  },
+  // clients
+  {
+    path: '/clients',
+    name: 'clients',
+    component: require('./pages/clients/clients.vue'),
+    beforeEnter: (to, from, next) => {
+      ClientsService.getClients();
+      next();
+    },
+    meta: {
+      auth: true,
+      is_admin: true,
     },
   },
   // details
@@ -114,7 +129,7 @@ export default [
     },
     meta: {
       auth: true,
-      admin: true,
+      // admin: true,
     },
   },
   // index

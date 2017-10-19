@@ -1,4 +1,4 @@
-import Autocomplete from 'vue2-autocomplete-js';
+import Autocomplete from '@/components/Autocomplete.vue';
 import MaskedInput from 'vue-masked-input';
 import moment from 'moment';
 
@@ -72,7 +72,7 @@ export default {
       return false;
     },
     initCustomer(customer) {
-      this.clientInfo = { ...customer, kids: '0', adults: '1', kidsAfter7: '0', visitComment: null };
+      this.clientInfo = { ...customer, visitComment: null };
       this.clientType = 'new';
       this.clientInfo.phoneRaw = this.clientInfo.phone;
       this.$emit('input', this.clientInfo);

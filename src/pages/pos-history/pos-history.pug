@@ -13,10 +13,10 @@ v-layout
     table.table.table-striped
       thead
         tr
-        th(width="150") Дата/Время
-        th Клиент
-        th(width="100") Сумма
-        th(width="200") Действия
+          th(width="150") Дата/Время
+          th Клиент
+          th(width="100") Сумма
+          th(width="200") Действия
       tbody
         tr(v-for="order in orders", :class="{'is-deleted': order.is_deleted}")
           td {{ order.date }}
